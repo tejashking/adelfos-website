@@ -1,0 +1,56 @@
+{
+  "summary": "Full e2e test of the Adelfos Marketing site (React CRA + FastAPI + MongoDB) against the public preview URL. Backend: 13/13 pytest tests pass (/api/, /api/contact validation + honeypot + timing guard + rate limit, /api/contact/count persistence, sitemap.xml 30 <loc>, robots.txt Sitemap line). Frontend: homepage light/white theme with Manrope confirmed, hero headline exact copy, all 11 homepage sections present in correct order, sticky method column top exactly 112px, 3D real-estate WebGL canvas renders with 6 scroll stages, 11 service cards, testimonials next/prev/ArrowRight, custom cursor 'VIEW' on case-study hover, loading screen shows once per session, all 11 service deep links, all 8 case studies, all 5 articles, /about /privacy /terms, 404 page, mobile 390px zero horizontal overflow on 4 routes, mobile menu open/navigate/close, contact form validation (5 errors) and successful submission (contact-success), reduced-motion renders all content with no hidden text. Zero console/page errors on every route tested. Two real defects found: duplicate/non-unique meta description on every page, and an invisible white-on-white link on the 404 page.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "POST /api/contact", "issue": "Rate limit state is an in-process dict (_rate). It resets on every backend reload/restart and is not shared across workers, so the 5/hour/IP protection is not reliable in production. Consider Mongo/Redis-backed counter."},
+      {"endpoint": "POST /api/contact", "issue": "started_at guard is skipped entirely when the field is omitted (`if payload.started_at and ...`), so a bot can bypass the 2.5s timing check by simply not sending started_at. Verified: minimal payload without started_at returns 201."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "NotFound (pages/NotFound.jsx line ~26)", "issue": "Invisible text: <Link to=\"/contact\" className=\"link-underline text-white\">talk to us</Link> renders white (rgb(255,255,255)) on the white 404 background. Verified via computed style. Leftover from the old dark theme.", "selector": "[data-testid=\"not-found-page\"] a:has-text('talk to us')", "priority": "HIGH"},
+      {"component": "public/index.html + SEO.jsx", "issue": "Duplicate <meta name=\"description\"> on every route (document.querySelectorAll('meta[name=description]').length === 2). The static tag in public/index.html:7 lacks data-rh=\"true\", so react-helmet-async appends a second tag instead of replacing it. Result: all 11 service pages (and all other pages) expose the identical generic site-wide description as the first/primary description tag, defeating per-page SEO. Titles are correctly unique. Fix: add data-rh=\"true\" to the static meta tag (or remove it).", "selector": "meta[name=description]", "priority": "HIGH"},
+      {"component": "App.js Suspense Fallback", "issue": "Lazy-route fallback is `<div className=\"min-h-screen bg-black\">` — a full black flash on a light-theme site during route chunk loading. Should be bg-white.", "selector": "n/a", "priority": "MEDIUM"},
+      {"component": "Button (components/common/Button.jsx)", "issue": "When `to` is passed, data-testid is placed on the wrapping motion.span, not on the inner <a>. So getAttribute('href') on e.g. [data-testid=\"not-found-home\"], hero-cta-primary, cta-primary returns null. Clicking works, but href-based assertions/SEO crawlers of the testid element fail. Move the testid (or duplicate it) onto the Link.", "selector": "[data-testid=\"not-found-home\"]", "priority": "LOW"},
+      {"component": "demo-badge", "issue": "data-testid=\"demo-badge\" is used on 7 elements on the homepage and 2-3 per case study page. data-testid should be unique per page.", "selector": "[data-testid=\"demo-badge\"]", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Service detail FAQ", "issues": ["faq-toggle-0 starts with aria-expanded=true (first item pre-expanded), so clicking it collapses rather than expands. Works, but note if the spec expects all collapsed by default."]},
+      {"screen": "Contact page after successful submit", "issues": ["Large empty white area (~350px) below the success card because the container keeps the tall form height; success state looks unbalanced."]},
+      {"screen": "Real-estate 3D section (dark)", "issues": ["Vertical hint text 'MOVE CURSOR TO ORBIT / SCROLL TO EXPLORE' and the inactive stage labels are very low contrast (dark grey on near-black).", "The light/white navbar sits directly on top of the black 3D section with no theme inversion — visually jarring."]},
+      {"screen": "Homepage trust-bar under prefers-reduced-motion", "issues": ["Marquee continues to animate/scroll with reduced motion emulated (content is visible, so non-blocking, but it is an a11y nit)."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/backend_test.py",
+    "/app/backend/tests/conftest.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "Fix white-on-white 'talk to us' link on the 404 page (remove text-white in pages/NotFound.jsx).",
+    "Add data-rh=\"true\" to the static <meta name=\"description\"> in /app/frontend/public/index.html (or delete it) so react-helmet-async replaces it and each page gets a unique, single meta description.",
+    "Change App.js Suspense Fallback from bg-black to bg-white to match the light theme.",
+    "Move data-testid onto the inner <Link>/<a> in components/common/Button.jsx so testid elements expose href.",
+    "Make demo-badge data-testid unique per instance (e.g. demo-badge-hero, demo-badge-metrics).",
+    "Optional hardening: enforce the started_at timing guard even when started_at is absent, and move the contact rate limiter out of process memory."
+  ],
+  "critical_code_review_comments": [
+    "public/index.html static meta description without data-rh breaks all per-page descriptions — highest-impact SEO bug on the site.",
+    "NotFound.jsx retains a dark-theme utility class (text-white) after the light-theme migration; grep the codebase for other stale text-white / bg-black usages on light backgrounds (App.js Fallback is another one).",
+    "server.py POST /api/contact: `if payload.started_at and ...` makes the anti-bot timing check opt-in from the client's perspective.",
+    "server.py _rate in-memory dict is not durable or multi-worker safe."
+  ],
+  "updated_files": [
+    "/app/backend/tests/backend_test.py",
+    "/app/backend/tests/conftest.py"
+  ],
+  "success_rate": {"backend": "100% (13/13)", "frontend": "~93% (all functional flows pass; 2 real defects: 404 invisible link, duplicate meta description)"},
+  "seed_data_creation": "3 TEST_-prefixed rows inserted into Mongo collection contact_submissions (TEST_QA Bot, TEST_Minimal, TEST_UI Runner) via the public contact endpoint. Left in place because there is no delete endpoint; safe to drop manually.",
+  "should_call_test_agent_after_fix": true,
+  "should_main_agent_self_test": false,
+  "test_credentials": "None required — public marketing site. /app/memory/test_credentials.md is present and accurate.",
+  "context_for_next_testing_agent": "Backend suite lives at /app/backend/tests/backend_test.py; run with `cd /app/backend && python -m pytest tests/ -v`. IMPORTANT: pytest.ini enables xdist loadscope, so count-dependent tests were consolidated into TestContactCreate to avoid a cross-worker race (the honeypot count test previously failed spuriously when run in parallel with the create test). CRITICAL RATE LIMIT: POST /api/contact allows only 5 successful submissions per IP per hour — the suite consumes 2 per run and the UI success test 1, so a full backend+frontend run uses 3. Wait ~1h between full runs or expect 429/skips. Verified working and needing no retest: navbar + mobile menu navigation, mobile 390px overflow (all 4 routes exactly 390), sticky method column (top=112), 3D real-estate canvas + 6 stages + CTAs, testimonials next/prev/ArrowRight, custom cursor 'VIEW', loading screen once-per-session, all 11 service deep links (unique titles, 1 h1, 3 JSON-LD, canonical, breadcrumbs, FAQ, 3 related links, hero CTA; /services/real-estate embeds the 3D section), all 8 case studies (results 0-2, case-service links, next-case-study cycles), all 5 articles (Article + BreadcrumbList JSON-LD), sitemap 30 locs, robots Sitemap line, reduced-motion rendering. On retest, focus on: meta-description uniqueness across the 11 service pages, the 404 link colour, and App.js fallback colour.",
+  "rca_of_the_issue": "Duplicate meta description: react-helmet-async only replaces server/static head tags that carry the data-rh=\"true\" marker. /app/frontend/public/index.html line 7 declares <meta name=\"description\"> without it, so Helmet appends its own tag and both persist; document.querySelector('meta[name=description]') (and many crawlers) read the first, generic one — hence all 11 service pages reported the identical 189-char site-wide description while <title> (which Helmet replaces by element type) was correctly unique. 404 invisible link: the light-theme migration missed the text-white class on the inline 'talk to us' Link in pages/NotFound.jsx, leaving white text on a bg-white section (computed color rgb(255,255,255)). Note: the hero's two heading lines have ~4.8px of bounding-box overlap, but that is line-box/descender overlap from the mask-line reveal wrappers — the rendered glyphs do not overlap (confirmed by screenshot), so this is not a defect."
+}

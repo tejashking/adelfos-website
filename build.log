@@ -1,0 +1,42 @@
+yarn run v1.22.22
+$ craco build
+Creating an optimized production build...
+
+[1m[33mwarn[39m[22m - The class `duration-[2000ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `duration-&lsqb;2000ms&rsqb;` to silence this warning.
+Compiled successfully.
+
+File sizes after gzip:
+
+  246.57 kB  .build-check/static/js/919.65763baf.chunk.js
+  152.81 kB  .build-check/static/js/main.bfc5f961.js
+  41.16 kB   .build-check/static/js/270.26b27c7f.chunk.js
+  14.09 kB   .build-check/static/js/402.66de4672.chunk.js
+  14.02 kB   .build-check/static/css/main.f18f2fd1.css
+  9.58 kB    .build-check/static/js/877.d5f24687.chunk.js
+  8.94 kB    .build-check/static/js/614.6b154f01.chunk.js
+  8.18 kB    .build-check/static/js/787.b6f4bbce.chunk.js
+  7 kB       .build-check/static/js/824.8078fc68.chunk.js
+  5.67 kB    .build-check/static/js/869.6fcd404d.chunk.js
+  5.56 kB    .build-check/static/js/27.469b96f4.chunk.js
+  5.17 kB    .build-check/static/js/701.78b2669b.chunk.js
+  3.82 kB    .build-check/static/js/61.fb995256.chunk.js
+  3.5 kB     .build-check/static/js/461.3791919f.chunk.js
+  3.08 kB    .build-check/static/js/825.d979ee47.chunk.js
+  2.69 kB    .build-check/static/js/443.562ebcc2.chunk.js
+  1.83 kB    .build-check/static/js/309.aa7802f2.chunk.js
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The .build-check folder is ready to be deployed.
+You may serve it with a static server:
+
+  yarn global add serve
+  serve -s .build-check
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
+Done in 25.64s.

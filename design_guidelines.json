@@ -1,0 +1,197 @@
+{
+  "brand_identity": {
+    "name": "ADELFOS MARKETING",
+    "positioning": "WE BUILD DIGITAL EMPIRES FOR LOCAL BUSINESS.",
+    "location": "Calgary, Alberta",
+    "vibe": "High-gravity editorial, Awwwards-level Framer agency, stark monochrome with electric red impact, asymmetric Swiss grid, heavy typographic authority, brutal precision.",
+    "emotional_archetype": "The Performance Pro & High-Contrast Swiss",
+    "logos": {
+      "mark_small_red": "https://customer-assets-lqy194kg.emergentagent.net/job_b5ff28f0-994e-4d2c-8abc-91e933bf1190/artifacts/bhbu2f8y_Logo%20Small.png",
+      "wordmark_tagline_color": "https://customer-assets-lqy194kg.emergentagent.net/job_b5ff28f0-994e-4d2c-8abc-91e933bf1190/artifacts/jtjbq9i8_Adelfos%20Marketing%20Tagline%20Colour.png",
+      "wordmark_tagline_black": "https://customer-assets-lqy194kg.emergentagent.net/job_b5ff28f0-994e-4d2c-8abc-91e933bf1190/artifacts/ct3bhhz3_Adelfos%20Marekting_Tagline_Black.png"
+    }
+  },
+  "colors": {
+    "primary": "#000000",
+    "accent": "#FF3131",
+    "white": "#FFFFFF",
+    "off_white": "#F7F7F7",
+    "surface_dark": "#0A0A0A",
+    "surface_card": "#121212",
+    "border_subtle": "#1F1F1F",
+    "border_light": "#E5E5E5",
+    "muted_text": "#888888",
+    "muted_text_dark": "#A1A1AA",
+    "rules": {
+      "tinted_grey": "Use #0A0A0A and #121212 rather than pure grey for surfaces.",
+      "red_usage": "Accent #FF3131 used sparingly (< 5% screen area) for hover highlights, active tab indicators, kinetic cursors, and key metrics.",
+      "forbidden_colors": ["#7351B7", "#1B93A4"]
+    }
+  },
+  "typography": {
+    "pairing_strategy": "Editorial Future (High Contrast Display + Sterile Precision Sans & Accent Serif)",
+    "fonts": {
+      "heading": {
+        "family": "Syne, sans-serif",
+        "google_font_url": "https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap",
+        "weight": "800",
+        "tracking": "tracking-tighter"
+      },
+      "body": {
+        "family": "Plus Jakarta Sans, sans-serif",
+        "weight": "400",
+        "tracking": "tracking-normal"
+      },
+      "editorial_accent": {
+        "family": "Instrument Serif, serif",
+        "style": "italic",
+        "usage": "Used for emphatic inline story words in hero & section statements"
+      },
+      "mono": {
+        "family": "JetBrains Mono, monospace",
+        "usage": "Used for step counters (01, 02), timestamps, tags, and stats labels"
+      }
+    },
+    "scale": {
+      "hero_title": "text-4xl sm:text-6xl lg:text-7xl font-extrabold uppercase leading-[0.9] tracking-tighter",
+      "h1": "text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase leading-[0.95] tracking-tighter",
+      "h2": "text-2xl sm:text-4xl lg:text-5xl font-bold uppercase leading-[1.0] tracking-tight",
+      "h3": "text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight",
+      "h4": "text-lg sm:text-xl font-semibold tracking-tight",
+      "subtitle": "text-base sm:text-xl text-neutral-400 font-normal leading-relaxed max-w-2xl",
+      "body_large": "text-lg sm:text-xl leading-relaxed font-light",
+      "body": "text-sm sm:text-base leading-relaxed text-neutral-300",
+      "caption": "text-xs uppercase tracking-[0.2em] font-mono text-neutral-400"
+    },
+    "forbidden_fonts": ["Inter", "Space Grotesk"]
+  },
+  "custom_cursor_and_transitions": {
+    "cursor": {
+      "type": "Custom Geometric Cursor",
+      "behavior": "Follows mouse position with smooth spring physics on desktop viewports. Morphs into a red square or 'VIEW' pill when hovering case study cards, expandable video frames, and CTAs.",
+      "implementation": "Framer Motion pointer events container with pointer-events-none z-50 fixed."
+    },
+    "page_transitions": {
+      "motif": "4-triangle geometric logo animation overlay that sweeps in on route changes with high contrast black/red background fill."
+    }
+  },
+  "layout_and_spacing": {
+    "grid_system": "12-column sharp asymmetric grid with crisp subtle 1px borders (#1F1F1F) and deep dark canvas",
+    "container_max": "max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12",
+    "spacing_scale": {
+      "section_padding": "py-24 lg:py-36",
+      "component_gap": "gap-8 lg:gap-16",
+      "inner_padding": "p-6 sm:p-10 lg:p-12"
+    }
+  },
+  "buttons_and_interactions": {
+    "primary_button": "bg-white text-black font-semibold uppercase text-xs sm:text-sm tracking-widest px-8 py-4 hover:bg-[#FF3131] hover:text-white transition-all duration-300 flex items-center justify-between gap-4 border border-white group",
+    "secondary_button": "bg-transparent text-white font-medium uppercase text-xs sm:text-sm tracking-widest px-8 py-4 border border-neutral-800 hover:border-white transition-all duration-300 group",
+    "accent_button": "bg-[#FF3131] text-white font-semibold uppercase text-xs sm:text-sm tracking-widest px-8 py-4 hover:bg-white hover:text-black transition-all duration-300",
+    "hover_row": "Border-b border-[#1F1F1F] py-8 sm:py-12 transition-all duration-500 hover:pl-6 hover:bg-neutral-950 flex justify-between items-center group cursor-pointer"
+  },
+  "homepage_sections_composition": {
+    "loading_screen": {
+      "description": "Preloader featuring geometric red 4-triangle logo mark assembling with counter 0% -> 100%, reveals the homepage via split curtain reveal.",
+      "testid": "loading-screen"
+    },
+    "navbar": {
+      "description": "Sticky dark backdrop-blur-md navbar (bg-black/85) with official Adelfos Logo, navigation links (Work, Services, Method, About, Insights), and 'BUILD YOUR EMPIRE' primary CTA. Fullscreen mobile drawer with big typographic links.",
+      "testid": "navbar"
+    },
+    "hero": {
+      "description": "Black hero with kinetic line-by-line masked text reveal: 'WE BUILD DIGITAL EMPIRES FOR LOCAL BUSINESS.' Includes interactive 3D particle landscape/mesh canvas, quick stats, and red accent pulse indicator.",
+      "testid": "hero-section"
+    },
+    "attention_typographic_statement": {
+      "description": "Massive full-bleed statement text: 'MEDIOCRE MARKETING IS AN EXISTENTIAL RISK.' Interactive text highlight on hover & scroll.",
+      "testid": "attention-statement"
+    },
+    "sticky_adelfos_method": {
+      "description": "5-Step Sticky Scroll Section: 01 AUDIT & DESTRUCTION, 02 EMPIRE ARCHITECTURE, 03 HYPER-TARGETED ACQUISITION, 04 BRAND DOMINANCE, 05 SCALED MONOPOLY. As users scroll, sticky left column displays current phase while right column transitions narrative & visuals.",
+      "testid": "adelfos-method-section"
+    },
+    "services_index_hover_rows": {
+      "description": "Interactive large hover rows listing core services. Hovering a service reveals a dynamic floating image preview near the cursor.",
+      "services_list": [
+        "SEO & Search Dominance",
+        "High-Conversion Web Empire",
+        "Paid Meta & Google Ads",
+        "Real Estate 3D Visuals & Flythroughs",
+        "Brand Strategy & Identity",
+        "Social Media Domination",
+        "Local Business Funnels",
+        "Conversion Rate Optimization",
+        "Reputation & Review Systems",
+        "Commercial Photography & Video",
+        "Automated CRM & Lead Nurture"
+      ],
+      "testid": "services-index-section"
+    },
+    "real_estate_3d_section": {
+      "description": "Dedicated feature section spotlighting Calgary Real Estate 3D rendering, interactive floorplan viewer simulation, lighting toggles, and high-impact exterior imagery.",
+      "testid": "real-estate-3d-section"
+    },
+    "featured_case_studies": {
+      "description": "Asymmetric 2-column & 1-column showcase of Calgary business case studies with metric badges (e.g. +340% Revenue, #1 Google Rank, $14M Real Estate Sold).",
+      "testid": "featured-case-studies-section"
+    },
+    "metrics_section": {
+      "description": "Interactive ROI calculator & empire metric counter ($42M+ Client Revenue Generated, 180+ Local Businesses Scaled, 99.4% Retention).",
+      "testid": "metrics-section"
+    },
+    "testimonials_carousel": {
+      "description": "High-contrast testimonial slider featuring Calgary founders & real estate executives, quote typography, headshots, and verified Google rating badge.",
+      "testid": "testimonials-section"
+    },
+    "insights_grid": {
+      "description": "Editorial 3-card grid of Calgary market marketing breakdowns and tactical playbooks.",
+      "testid": "insights-section"
+    },
+    "final_cta": {
+      "description": "Oversized CTA banner: 'READY TO CLAIM YOUR MARKET SHARE?' with direct booking integration triggers & instant contact form.",
+      "testid": "final-cta-section"
+    },
+    "footer": {
+      "description": "Deep dark footer featuring massive 'ADELFOS' outline watermark text, Calgary HQ address, office hours, dynamic clock (Calgary MST time), sitemap, and copyright statement.",
+      "testid": "footer"
+    }
+  },
+  "page_routes_and_views": {
+    "home": "/",
+    "about": "/about",
+    "services": "/services",
+    "service_detail": "/services/:slug",
+    "work": "/work",
+    "case_study_detail": "/work/:slug",
+    "insights": "/insights",
+    "article_detail": "/insights/:slug",
+    "contact": "/contact",
+    "not_found": "/404"
+  },
+  "image_urls": {
+    "calgary_skyline_hero": "https://images.unsplash.com/photo-1688071458340-448d56949b79?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHw0fHxjYWxnYXJ5JTIwY2l0eSUyMHNreWxpbmUlMjBtb2Rlcm4lMjBhcmNoaXRlY3R1cmUlMjBkYXJrJTIwbW9vZHl8ZW58MHx8fHwxNzg4MzA4MTM0fDA&ixlib=rb-4.1.0&q=85",
+    "calgary_tower_street": "https://images.unsplash.com/photo-1746909779625-b39da8f7974c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHwyfHxjYWxnYXJ5JTIwY2l0eSUyMHNreWxpbmUlMjBtb2Rlcm4lMjBhcmNoaXRlY3R1cmUlMjBkYXJrJTIwbW9vZHl8ZW58MHx8fHwxNzg4MzA4MTM0fDA&ixlib=rb-4.1.0&q=85",
+    "calgary_river_view": "https://images.unsplash.com/photo-1740948068055-db7e9f5d899f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHszfHxjYWxnYXJ5JTIwY2l0eSUyMHNreWxpbmUlMjBtb2Rlcm4lMjBhcmNoaXRlY3R1cmUlMjBkYXJrJTIwbW9vZHl8ZW58MHx8fHwxNzg4MzA4MTM0fDA&ixlib=rb-4.1.0&q=85",
+    "real_estate_3d_mansion": "https://images.unsplash.com/photo-1757840589823-5e074cc2bab6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHszfHxsdXh1cnklMjBtb2Rlcm4lMjByZWFsJTIwZXN0YXRlJTIwYXJjaGl0ZWN0dXJlJTIwZXh0ZXJpb3IlMjBkYXJrJTIwaGlnaCUyMGNvbnRyYXN0fGVufDB8fHx8MTc4ODMwODEzNHww&ixlib=rb-4.1.0&q=85",
+    "real_estate_3d_geometric": "https://images.unsplash.com/photo-1786042251653-a41532b21394?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHwyfHxsdXh1cnklMjBtb2Rlcm4lMjByZWFsJTIwZXN0YXRlJTIwYXJjaGl0ZWN0dXJlJTIwZXh0ZXJpb3IlMjBkYXJrJTIwaGlnaCUyMGNvbnRyYXN0fGVufDB8fHx8MTc4ODMwODEzNHww&ixlib=rb-4.1.0&q=85",
+    "real_estate_3d_window": "https://images.unsplash.com/photo-1710093141363-5930cf9b2f5c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODB8MHwxfHNlYXJjaHw0fHxsdXh1cnklMjBtb2Rlcm4lMjByZWFsJTIwZXN0YXRlJTIwYXJjaGl0ZWN0dXJlJTIwZXh0ZXJpb3IlMjBkYXJrJTIwaGlnaCUyMGNvbnRyYXN0fGVufDB8fHx8MTc4ODMwODEzNHww&ixlib=rb-4.1.0&q=85",
+    "agency_team_1": "https://images.unsplash.com/photo-1700672481083-edffef7d5282?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwyfHxjcmVhdGl2ZSUyMGFnZW5jeSUyMHRlYW0lMjBwb3J0cmFpdCUyMHN0dWRpbyUyMGJsYWNrJTIwd2hpdGUlMjByZWR8ZW58MHx8fHwxNzg4MzA4MTM0fDA&ixlib=rb-4.1.0&q=85",
+    "agency_team_2": "https://images.unsplash.com/photo-1556793521-ec4b34e6545e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHw3fHxjcmVhdGl2ZSUyMGFnZW5jeSUyMHRlYW0lMjBwb3J0cmFpdCUyMHN0dWRpbyUyMGJsYWNrJTIwd2hpdGUlMjByZWR8ZW58MHx8fHwxNzg4MzA4MTM0fDA&ixlib=rb-4.1.0&q=85",
+    "agency_team_3": "https://images.unsplash.com/photo-1621204769487-8745f2097f97?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMGFnZW5jeSUyMHRlYW0lMjBwb3J0cmFpdCUyMHN0dWRpbyUyMGJsYWNrJTIwd2hpdGUlMjByZWR8ZW58MHx8fHwxNzg4MzA4MTM0fDA&ixlib=rb-4.1.0&q=85"
+  },
+  "instructions_to_main_agent": [
+    "Load Google Fonts Syne, Plus Jakarta Sans, Instrument Serif, and JetBrains Mono in public/index.html or index.css.",
+    "Implement Lenis smooth scroll or custom scroll handling to ensure liquid smooth movement.",
+    "Use Framer Motion for line-by-line text reveals, sticky section transitions, custom cursor, and logo geometric page transition overlay.",
+    "Strictly follow data-testid naming conventions on buttons, nav links, form elements, metrics, cards, and modals.",
+    "Maintain high-contrast dark theme (#000000 / #0A0A0A) with razor-sharp 1px subtle borders (#1F1F1F) and high impact red accent (#FF3131).",
+    "Build all 11 Service Detail Pages dynamically or with rich specialized content for each sub-discipline."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "All interactive elements MUST include data-testid attributes.",
+    "Do NOT use transparent backgrounds on sticky headers or modals without blur/scrim.",
+    "Ensure contrast meets APCA standard with readable off-white and pure white text over dark surfaces.",
+    "Do NOT introduce rounded bubble cards, heavy cyan gradients, or corporate stock icons."
+  ]
+}
