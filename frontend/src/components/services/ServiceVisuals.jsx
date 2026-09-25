@@ -32,7 +32,7 @@ export const SearchResults = () => (
     <div className="bg-white text-black p-4 sm:p-6 max-w-xl">
       <div className="flex items-center gap-3 border border-neutral-300 rounded-full px-4 py-2 text-sm text-neutral-600"><Search size={16} />marketing agency calgary</div>
       <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }} className="mt-6 flex gap-4 items-start">
-        <img src="/images/brand/logo-mark.png" alt="" className="w-10 h-10 border border-neutral-200" />
+        <img src={`${process.env.PUBLIC_URL || ""}/images/brand/logo-mark.png`} alt="" className="w-10 h-10 border border-neutral-200" />
         <div><p className="font-semibold">Adelfos Marketing</p><p className="text-xs text-neutral-500 flex items-center gap-1"><Star size={12} className="fill-[#ff3131] text-[#ff3131]" /> Reviews · Marketing agency · Calgary, AB</p><p className="text-xs text-neutral-600 mt-1 flex items-center gap-1"><MapPin size={12} />Calgary · By appointment</p></div>
       </motion.div>
       {["adelfosmarketing.com › services › seo", "adelfosmarketing.com › services › digital-advertising"].map((u, i) => (

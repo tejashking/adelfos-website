@@ -15,7 +15,7 @@ export const Footer = () => {
       <div className="container-x pt-20 lg:pt-28 pb-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8">
           <div className="lg:col-span-5">
-            <img src="/images/brand/wordmark-white.png" alt="Adelfos Marketing — Beyond boundaries, beyond expectation" width="260" height="86" className="w-56 sm:w-64 h-auto" loading="lazy" />
+            <img src={`${process.env.PUBLIC_URL || ""}/images/brand/wordmark-white.png`} alt="Adelfos Marketing — Beyond boundaries, beyond expectation" width="260" height="86" className="w-56 sm:w-64 h-auto" loading="lazy" />
             <p className="display-md mt-10 max-w-md">We build digital empires<br />for local business.</p>
             <div className="mt-10 flex flex-wrap gap-4">
               <a href={`mailto:${site.email}`} onClick={() => trackEvent("email_click")} data-testid="footer-email" className="link-underline font-mono text-xs uppercase tracking-[0.2em] text-neutral-300 hover:text-white">{site.email}</a>

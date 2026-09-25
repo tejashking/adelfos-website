@@ -34,7 +34,7 @@ export const Navbar = () => {
       >
         <nav className={`container-x flex items-center justify-between transition-[padding] duration-500 ${scrolled ? "py-3" : "py-5"}`} aria-label="Primary">
           <Link to="/" className="flex items-center gap-3 group" data-testid="nav-logo" aria-label="Adelfos Marketing home">
-            <img src="/images/brand/logo-mark-transparent.png" alt="" width="36" height="36" className="w-8 h-8 sm:w-9 sm:h-9 transition-transform duration-500 group-hover:rotate-90" />
+            <img src={`${process.env.PUBLIC_URL || ""}/images/brand/logo-mark-transparent.png`} alt="" width="36" height="36" className="w-8 h-8 sm:w-9 sm:h-9 transition-transform duration-500 group-hover:rotate-90" />
             <span className="font-display font-extrabold tracking-tight text-base sm:text-lg leading-none text-[#111]">Adelfos <span className="font-semibold text-neutral-500">Marketing</span></span>
           </Link>
           <ul className="hidden lg:flex items-center gap-9">

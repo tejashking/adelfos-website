@@ -20,7 +20,7 @@ const Fallback = () => <div className="min-h-screen bg-black" aria-busy="true" /
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL || "/"}>
       <Suspense fallback={<Fallback />}>
         <Routes>
           <Route element={<Layout />}>

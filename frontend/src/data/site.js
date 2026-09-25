@@ -1,4 +1,6 @@
 // REAL BRAND CONTENT — sourced from adelfosmarketing.com and official assets.
+const PUBLIC_PATH = process.env.PUBLIC_URL || "";
+
 export const site = {
   name: "Adelfos Marketing",
   legalName: "Adelfos Marketing",
@@ -15,9 +17,9 @@ export const site = {
   hours: "By appointment",
   social: [{ label: "Facebook", href: "https://www.facebook.com/adelf" }],
   logos: {
-    mark: "/images/brand/logo-mark.png",
-    wordmarkColour: "/images/brand/logo-tagline-colour.png",
-    wordmarkBlack: "/images/brand/logo-tagline-black.png",
+    mark: `${PUBLIC_PATH}/images/brand/logo-mark.png`,
+    wordmarkColour: `${PUBLIC_PATH}/images/brand/logo-tagline-colour.png`,
+    wordmarkBlack: `${PUBLIC_PATH}/images/brand/logo-tagline-black.png`,
   },
   ctaPrimary: "Start a project",
   ctaSecondary: "Explore our work",
