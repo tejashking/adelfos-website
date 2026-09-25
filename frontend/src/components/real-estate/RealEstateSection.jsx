@@ -21,7 +21,7 @@ const hasWebGL = () => { try { const c = document.createElement("canvas"); retur
 
 const Fallback = () => (
   <div className="absolute inset-0" data-testid="real-estate-fallback">
-    <img src="https://images.unsplash.com/photo-1757840589823-5e074cc2bab6?auto=format&fit=crop&w=1800&q=80" alt="Modern luxury home exterior at dusk" className="w-full h-full object-cover opacity-70 animate-in fade-in zoom-in-105 duration-[2000ms]" />
+    <img src="https://images.unsplash.com/photo-1757840589823-5e074cc2bab6?auto=format&fit=crop&w=1800&q=80" alt="Modern luxury home exterior at dusk" className="w-full h-full object-cover opacity-70 animate-in fade-in zoom-in-105" style={{ animationDuration: "2000ms" }} />
     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
   </div>
 );

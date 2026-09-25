@@ -471,15 +471,18 @@ async def update_lead_status(
 
 app.include_router(api_router)
 cors_origins = [
-    origin.strip() for origin in os.environ.get('CORS_ORIGINS', '*').split(',') if origin.strip()
+    origin.strip() for origin in os.environ.get(
+        'CORS_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000'
+    ).split(',') if origin.strip()
 ]
 if not cors_origins:
-    cors_origins = ['*']
+    cors_origins = ['http://localhost:3000']
+allow_all_origins = '*' in cors_origins
 
 app.add_middleware(
     CORSMiddleware,
-    allow_credentials=True,
-    allow_origins=cors_origins,
+    allow_credentials=not allow_all_origins,
+    allow_origins=['*'] if allow_all_origins else cors_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )

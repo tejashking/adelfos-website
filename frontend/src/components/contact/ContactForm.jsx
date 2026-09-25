@@ -8,7 +8,7 @@ import { ArrowRight, Loader2 } from "lucide-react";
 import { services } from "@/data/services";
 import { trackEvent } from "@/lib/analytics";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = `${process.env.REACT_APP_BACKEND_URL || ""}/api`;
 
 const schema = z.object({
   name: z.string().min(2, "Please enter your name").max(120),

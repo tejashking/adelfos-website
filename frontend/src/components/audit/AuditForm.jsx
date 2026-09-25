@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = `${process.env.REACT_APP_BACKEND_URL || ""}/api`;
 
 const schema = z.object({
   business_name: z.string().min(2, "Enter your business name").max(160),

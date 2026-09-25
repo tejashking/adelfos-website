@@ -3,7 +3,7 @@ import axios from "axios";
 import { ArrowRight, Loader2, LockKeyhole, RefreshCw, Search } from "lucide-react";
 import { SEO } from "@/components/layout/SEO";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = `${process.env.REACT_APP_BACKEND_URL || ""}/api`;
 const STATUS_OPTIONS = [["new", "New"], ["contacted", "Contacted"], ["qualified", "Qualified"], ["closed", "Closed"]];
 
 const formatDate = (value) => {
