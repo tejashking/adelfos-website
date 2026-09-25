@@ -41,10 +41,10 @@ export const method = [
   { n: "05", title: "Optimize", body: "We read the numbers weekly, cut what underperforms, scale what works and report in plain language about what changed and why.", visual: "loop" },
 ];
 
-// DEMO DATA — placeholder metrics until real Adelfos figures are supplied.
+// Demo data only. Replace with verified Adelfos figures before launch.
 export const stats = [
-  { value: 0, suffix: "+", label: "Clients", demo: true },
-  { value: 0, suffix: "+", label: "Projects delivered", demo: true },
-  { value: 0, suffix: "%", label: "Avg. campaign improvement", demo: true },
-  { value: 0, suffix: "+", label: "Industries served", demo: true },
+  { value: 42, suffix: "+", label: "Clients supported", demo: true },
+  { value: 86, suffix: "+", label: "Projects delivered", demo: true },
+  { value: 38, suffix: "%", label: "Average campaign lift", demo: true },
+  { value: 12, suffix: "+", label: "Industries served", demo: true },
 ];

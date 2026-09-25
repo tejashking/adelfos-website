@@ -5,11 +5,11 @@ import { VerticalOdometer } from "./VerticalOdometer";
 
 const Stat = ({ s, start, i }) => {
   return (
-    <ScrollReveal delay={i * 0.08} className="border-l-2 border-[#ff3131] pl-6 sm:pl-8 py-4" data-testid={`stat-${i}`}>
-      <p className="relative w-fit overflow-hidden font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl tracking-tighter leading-none tabular-nums">
+    <ScrollReveal delay={i * 0.08} className="min-w-0 border-l-2 border-[#ff3131] pl-4 sm:pl-8 py-3 sm:py-4" data-testid={`stat-${i}`}>
+      <p className="relative w-fit max-w-full overflow-hidden font-display font-bold text-4xl sm:text-6xl lg:text-7xl leading-none tabular-nums">
         <VerticalOdometer value={s.value === 0 ? "00" : s.value} prefix={s.prefix} suffix={s.suffix} start={start} />
       </p>
-      <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-neutral-600">{s.label}</p>
+      <p className="mt-4 max-w-[12rem] font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-neutral-600">{s.label}</p>
     </ScrollReveal>
   );
 };
@@ -27,7 +27,7 @@ export const Stats = () => {
             <span />
           </div>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-8 lg:grid-cols-4 lg:gap-4">
           {stats.map((s, i) => <Stat key={s.label} s={s} start={inView} i={i} />)}
         </div>
       </div>

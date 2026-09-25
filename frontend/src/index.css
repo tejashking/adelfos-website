@@ -10,9 +10,9 @@
   --red: #ff3131;
   --red-dark: #e02020;
   --line-light: #e5e5e5;
-  --font-display: "Manrope", sans-serif;
-  --font-body: "Manrope", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
 }
@@ -38,13 +38,13 @@ body {
 .font-display { font-family: var(--font-display); }
 .font-mono { font-family: var(--font-mono); }
 
-.container-x { @apply max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12; }
-.section-pad { @apply py-20 lg:py-28; }
+.container-x { @apply max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-12; }
+.section-pad { @apply py-16 sm:py-20 lg:py-28; }
 .eyebrow { @apply font-mono text-[11px] sm:text-xs uppercase tracking-[0.22em] text-[#ff3131] font-medium; }
-.display-xl { @apply font-display font-extrabold leading-[1.02] tracking-[-0.03em] text-[clamp(2.25rem,4.4vw,3.75rem)]; }
-.display-lg { @apply font-display font-extrabold leading-[1.05] tracking-[-0.03em] text-3xl sm:text-4xl lg:text-5xl; }
-.display-md { @apply font-display font-bold leading-[1.1] tracking-[-0.02em] text-2xl sm:text-3xl lg:text-4xl; }
-.display-sm { @apply font-display font-bold leading-tight tracking-tight text-xl sm:text-2xl; }
+.display-xl { @apply font-display font-bold leading-[1.04] text-[clamp(2.2rem,4.4vw,3.75rem)]; }
+.display-lg { @apply font-display font-bold leading-[1.08] text-3xl sm:text-4xl lg:text-5xl; }
+.display-md { @apply font-display font-bold leading-[1.12] text-2xl sm:text-3xl lg:text-4xl; }
+.display-sm { @apply font-display font-semibold leading-tight text-xl sm:text-2xl; }
 
 .mask-line { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
 .mask-line > span { display: block; will-change: transform; }
@@ -90,7 +90,7 @@ body {
 @keyframes metrics-loading { to { transform: translateX(290%); } }
 
 .btn {
-  @apply relative inline-flex items-center justify-center gap-3 font-semibold text-sm sm:text-[15px] tracking-[0.01em] px-6 py-3.5 rounded-md overflow-hidden select-none;
+  @apply relative inline-flex min-h-12 items-center justify-center gap-3 font-semibold text-sm sm:text-[15px] tracking-[0.01em] px-5 sm:px-6 py-3.5 rounded-md overflow-hidden select-none;
   transition: color 0.35s var(--ease-out), border-color 0.35s var(--ease-out), transform 0.15s var(--ease-out), box-shadow 0.35s var(--ease-out);
 }
 .btn:active { transform: scale(0.97); }
@@ -135,8 +135,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   outline: 2px solid var(--red); outline-offset: 3px;
 }
 
-.field { @apply w-full bg-white border border-[#d9d9d9] rounded-md px-4 py-3.5 text-base text-[#111] placeholder:text-neutral-400 focus:border-[#111] transition-colors duration-300 outline-none; }
+.field { @apply w-full min-h-12 bg-white border border-[#d9d9d9] rounded-md px-4 py-3.5 text-base text-[#111] placeholder:text-neutral-400 focus:border-[#111] transition-colors duration-300 outline-none; }
 .field:focus-visible { outline: none; }
+
+@media (max-width: 639px) {
+  .eyebrow { letter-spacing: 0.16em; }
+  .mask-line { padding-bottom: 0.12em; margin-bottom: -0.12em; }
+  .odometer-cell { width: 0.58em; }
+  .metrics-loading-rail { width: min(220px, 80vw); }
+}
 
 @media (hover: hover) and (pointer: fine) {
   .has-custom-cursor, .has-custom-cursor a, .has-custom-cursor button { cursor: none; }
