@@ -17,217 +17,126 @@ export const UnderConstructionOverlay = () => {
           inset: 0;
           pointer-events: none;
           overflow: hidden;
-          opacity: 0.95;
+          opacity: 0.9;
         }
-        .construction-scene .base {
+        .construction-scene .frame {
           position: absolute;
-          left: 50%;
-          bottom: 16%;
-          transform: translateX(-50%);
-          width: min(52vw, 680px);
-          height: 2px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+          inset: auto 0 0 0;
+          height: 38%;
+          border-top: 1px solid rgba(255,255,255,0.08);
+          background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.08));
         }
-        .construction-scene .logo-assembly {
+        .construction-scene .beam {
           position: absolute;
-          left: 50%;
-          bottom: 18%;
-          transform: translateX(-50%);
-          width: min(42vw, 520px);
-          height: 180px;
-        }
-        .construction-scene .logo-assembly .block {
-          position: absolute;
-          bottom: 0;
-          width: 120px;
-          height: 120px;
-          border: 1px solid rgba(255,255,255,0.16);
-          background: rgba(255,255,255,0.02);
-          box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04), 0 0 24px rgba(255, 49, 49, 0.08);
-        }
-        .construction-scene .logo-assembly .block.left { left: 0; }
-        .construction-scene .logo-assembly .block.mid { left: 50%; transform: translateX(-50%); }
-        .construction-scene .logo-assembly .block.right { right: 0; }
-        .construction-scene .logo-assembly .block::before,
-        .construction-scene .logo-assembly .block::after {
-          content: "";
-          position: absolute;
-          background: rgba(255, 49, 49, 0.92);
-          box-shadow: 0 0 18px rgba(255, 49, 49, 0.35);
-        }
-        .construction-scene .logo-assembly .block.left::before {
-          left: 18px;
-          top: 20px;
-          width: 84px;
-          height: 16px;
-          transform: rotate(28deg);
-        }
-        .construction-scene .logo-assembly .block.left::after {
-          left: 18px;
-          top: 82px;
-          width: 84px;
-          height: 16px;
-          transform: rotate(-28deg);
-        }
-        .construction-scene .logo-assembly .block.mid::before {
-          left: 18px;
-          top: 18px;
-          width: 84px;
-          height: 16px;
-          transform: rotate(25deg);
-        }
-        .construction-scene .logo-assembly .block.mid::after {
-          left: 18px;
-          top: 82px;
-          width: 84px;
-          height: 16px;
-          transform: rotate(-25deg);
-        }
-        .construction-scene .logo-assembly .block.right::before {
-          left: 18px;
-          top: 28px;
-          width: 84px;
-          height: 18px;
-          transform: rotate(18deg);
-        }
-        .construction-scene .logo-assembly .block.right::after {
-          left: 18px;
-          top: 78px;
-          width: 84px;
-          height: 18px;
-          transform: rotate(-18deg);
-        }
-        .construction-scene .logo-assembly .beam {
-          position: absolute;
-          left: 50%;
-          bottom: 80px;
-          transform: translateX(-50%);
-          width: min(32vw, 420px);
-          height: 6px;
-          border-radius: 999px;
-          background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0.7), rgba(255,255,255,0.2));
-          box-shadow: 0 0 18px rgba(255,255,255,0.2);
-        }
-        .construction-scene .logo-assembly .beam::before,
-        .construction-scene .logo-assembly .beam::after {
-          content: "";
-          position: absolute;
-          top: -16px;
+          bottom: 20%;
           width: 2px;
-          height: 42px;
-          background: rgba(255,255,255,0.72);
-        }
-        .construction-scene .logo-assembly .beam::before { left: 18%; }
-        .construction-scene .logo-assembly .beam::after { right: 18%; }
-
-        .construction-scene .worker {
-          position: absolute;
-          bottom: 14%;
-          width: 92px;
           height: 130px;
-          animation: bob 3.8s ease-in-out infinite;
+          background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.45), rgba(255,255,255,0));
+          animation: sway 11s ease-in-out infinite alternate;
         }
-        .construction-scene .worker.left { left: 15%; }
-        .construction-scene .worker.right { right: 15%; animation-delay: 1.1s; }
-        .construction-scene .worker .head {
+        .construction-scene .beam:nth-child(2) { left: 18%; }
+        .construction-scene .beam:nth-child(3) { left: 42%; animation-delay: 1.5s; }
+        .construction-scene .beam:nth-child(4) { left: 68%; animation-delay: 3s; }
+        .construction-scene .beam:nth-child(5) { left: 82%; animation-delay: 2s; }
+        .construction-scene .guy {
+          position: absolute;
+          bottom: 13%;
+          width: 76px;
+          height: 120px;
+          animation: bob 4s ease-in-out infinite;
+        }
+        .construction-scene .guy.left { left: 20%; animation-delay: 0.5s; }
+        .construction-scene .guy.right { left: 72%; animation-delay: 1.5s; }
+        .construction-scene .guy .head {
           position: absolute;
           left: 50%;
           transform: translateX(-50%);
           width: 18px;
           height: 18px;
           border-radius: 50%;
-          background: #f4d7b2;
-          box-shadow: 0 0 14px rgba(244, 215, 178, 0.4);
+          background: #f3d4b5;
+          box-shadow: 0 0 10px rgba(243, 212, 181, 0.5);
         }
-        .construction-scene .worker .body {
+        .construction-scene .guy .body {
           position: absolute;
           left: 50%;
-          top: 20px;
+          top: 18px;
           transform: translateX(-50%);
-          width: 38px;
-          height: 42px;
-          border-radius: 11px;
-          background: linear-gradient(180deg, #ff3131, #b81010);
-          box-shadow: 0 0 18px rgba(255, 49, 49, 0.25);
+          width: 34px;
+          height: 40px;
+          border-radius: 10px;
+          background: #ff3131;
+          box-shadow: 0 0 15px rgba(255, 49, 49, 0.3);
         }
-        .construction-scene .worker .arm,
-        .construction-scene .worker .leg {
+        .construction-scene .guy .arm,
+        .construction-scene .guy .leg {
           position: absolute;
-          background: #f7f7f7;
+          background: #ffffff;
           border-radius: 999px;
+          transform-origin: top center;
         }
-        .construction-scene .worker .arm {
-          top: 28px;
-          width: 46px;
+        .construction-scene .guy .arm {
+          top: 26px;
+          width: 48px;
           height: 8px;
         }
-        .construction-scene .worker.left .arm.left { left: 8px; transform: rotate(38deg); }
-        .construction-scene .worker.left .arm.right { right: 8px; transform: rotate(-25deg); }
-        .construction-scene .worker.right .arm.left { left: 8px; transform: rotate(25deg); }
-        .construction-scene .worker.right .arm.right { right: 8px; transform: rotate(-38deg); }
-        .construction-scene .worker .leg {
-          top: 60px;
+        .construction-scene .guy .arm.left { left: 8px; transform: rotate(22deg); }
+        .construction-scene .guy .arm.right { right: 8px; transform: rotate(-22deg); }
+        .construction-scene .guy .leg {
+          top: 52px;
           width: 10px;
-          height: 46px;
+          height: 42px;
         }
-        .construction-scene .worker.left .leg.left { left: 28px; transform: rotate(18deg); }
-        .construction-scene .worker.left .leg.right { right: 28px; transform: rotate(-16deg); }
-        .construction-scene .worker.right .leg.left { left: 28px; transform: rotate(-18deg); }
-        .construction-scene .worker.right .leg.right { right: 28px; transform: rotate(16deg); }
-        .construction-scene .worker .tool {
+        .construction-scene .guy .leg.left { left: 22px; transform: rotate(12deg); }
+        .construction-scene .guy .leg.right { right: 22px; transform: rotate(-12deg); }
+        .construction-scene .guy .tool {
           position: absolute;
-          top: 36px;
+          left: 50%;
+          top: 50px;
           width: 58px;
-          height: 7px;
+          height: 6px;
+          transform: translateX(-50%) rotate(12deg);
+          background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0.85), rgba(255,255,255,0.2));
           border-radius: 999px;
-          background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0.9), rgba(255,255,255,0.2));
-          box-shadow: 0 0 10px rgba(255,255,255,0.18);
         }
-        .construction-scene .worker.left .tool {
-          left: 18px;
-          transform: rotate(-18deg);
-        }
-        .construction-scene .worker.right .tool {
-          right: 18px;
-          transform: rotate(18deg);
-        }
-        .construction-scene .glow {
+        .construction-scene .light {
           position: absolute;
-          top: 12%;
-          width: 12px;
-          height: 12px;
+          top: 11%;
+          width: 10px;
+          height: 10px;
           border-radius: 50%;
           background: rgba(255, 49, 49, 0.9);
-          box-shadow: 0 0 14px rgba(255, 49, 49, 0.7), 0 0 42px rgba(255, 49, 49, 0.55);
-          animation: pulse 2.3s ease-in-out infinite alternate;
+          box-shadow: 0 0 18px rgba(255, 49, 49, 0.8), 0 0 42px rgba(255, 49, 49, 0.6);
+          animation: pulse 2.4s ease-in-out infinite alternate;
         }
-        .construction-scene .glow.one { left: 28%; }
-        .construction-scene .glow.two { left: 50%; animation-delay: 0.9s; }
-        .construction-scene .glow.three { right: 28%; animation-delay: 1.5s; }
+        .construction-scene .light:nth-child(6) { left: 28%; }
+        .construction-scene .light:nth-child(7) { left: 58%; animation-delay: 0.9s; }
+        .construction-scene .light:nth-child(8) { left: 76%; animation-delay: 1.6s; }
+        @keyframes sway {
+          0% { transform: translateY(0px) rotate(0deg); }
+          100% { transform: translateY(-10px) rotate(4deg); }
+        }
         @keyframes bob {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-12px); }
         }
         @keyframes pulse {
-          0% { opacity: 0.6; transform: scale(0.8); }
+          0% { opacity: 0.6; transform: scale(0.9); }
           100% { opacity: 1; transform: scale(1.2); }
         }
       `}</style>
 
       <div className="construction-scene" aria-hidden="true">
-        <div className="base" />
-        <div className="glow one" />
-        <div className="glow two" />
-        <div className="glow three" />
+        <div className="frame" />
+        <div className="beam" />
+        <div className="beam" />
+        <div className="beam" />
+        <div className="beam" />
+        <div className="light" />
+        <div className="light" />
+        <div className="light" />
 
-        <div className="logo-assembly">
-          <div className="beam" />
-          <div className="block left" />
-          <div className="block mid" />
-          <div className="block right" />
-        </div>
-
-        <div className="worker left">
+        <div className="guy left">
           <div className="head" />
           <div className="body" />
           <div className="arm left" />
@@ -237,14 +146,13 @@ export const UnderConstructionOverlay = () => {
           <div className="tool" />
         </div>
 
-        <div className="worker right">
+        <div className="guy right">
           <div className="head" />
           <div className="body" />
           <div className="arm left" />
           <div className="arm right" />
           <div className="leg left" />
           <div className="leg right" />
-          <div className="tool" />
         </div>
       </div>
 
