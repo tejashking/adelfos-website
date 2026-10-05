@@ -24,6 +24,7 @@ export const VerticalOdometer = ({ value, prefix = "", suffix = "", start = fals
   const hasStarted = useRef(false);
   const [animate, setAnimate] = useState(false);
   const valueText = String(value);
+  const shouldAnimate = /[1-9]/.test(valueText) && (animate || reduced);
 
   useEffect(() => {
     if (!start || hasStarted.current) return undefined;
@@ -37,14 +38,17 @@ export const VerticalOdometer = ({ value, prefix = "", suffix = "", start = fals
   }, [reduced, start]);
 
   return (
-    <span className="odometer" aria-label={`${prefix}${valueText}${suffix}`}>
-      {prefix && <span aria-hidden="true">{prefix}</span>}
-      {valueText.split("").map((character, index) => (
-        /\d/.test(character)
-          ? <DigitReel key={`${character}-${index}`} digit={character} animate={animate || reduced} />
-          : <span className="odometer-static" aria-hidden="true" key={`${character}-${index}`}>{character}</span>
-      ))}
-      {suffix && <span className="text-[#ff3131]" aria-hidden="true">{suffix}</span>}
-    </span>
+    <>
+      <span className="odometer" aria-hidden="true">
+        {prefix && <span>{prefix}</span>}
+        {valueText.split("").map((character, index) => (
+          /\d/.test(character)
+            ? <DigitReel key={`${character}-${index}`} digit={character} animate={shouldAnimate} />
+            : <span className="odometer-static" key={`${character}-${index}`}>{character}</span>
+        ))}
+        {suffix && <span className="text-[#ff3131]">{suffix}</span>}
+      </span>
+      <span className="sr-only">{`${prefix}${valueText}${suffix}`}</span>
+    </>
   );
 };

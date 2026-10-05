@@ -17,7 +17,7 @@
   --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-html { scroll-behavior: auto; overflow-x: clip; }
+html { position: relative; scroll-behavior: auto; overflow-x: clip; }
 #root, main { overflow-x: clip; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
@@ -26,12 +26,15 @@ html.lenis, html.lenis body { height: auto; }
 
 body {
   margin: 0;
-  background: var(--white);
-  color: var(--ink);
+  background: #ffffff;
+  color: #111111;
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+* { box-sizing: border-box; }
+canvas { touch-action: none; }
 
 ::selection { background: var(--red); color: var(--white); }
 

@@ -24,8 +24,8 @@ export const TestimonialSlider = () => {
         <div className="flex items-center justify-between gap-6 mb-12">
           <div className="flex items-center gap-4"><Eyebrow light>What clients say</Eyebrow><DemoBadge label="Demo testimonial" /></div>
           <div className="flex gap-2">
-            <button type="button" onClick={() => go(-1)} aria-label="Previous testimonial" data-testid="testimonial-prev" className="w-12 h-12 border border-black/20 flex items-center justify-center hover:bg-[#111] hover:text-black transition-colors"><ArrowLeft size={18} /></button>
-            <button type="button" onClick={() => go(1)} aria-label="Next testimonial" data-testid="testimonial-next" className="w-12 h-12 border border-black/20 flex items-center justify-center hover:bg-[#111] hover:text-black transition-colors"><ArrowRight size={18} /></button>
+            <button type="button" onClick={() => go(-1)} aria-label="Previous testimonial" data-testid="testimonial-prev" className="w-12 h-12 border border-black/20 flex items-center justify-center hover:bg-[#111] hover:text-white transition-colors"><ArrowLeft size={18} /></button>
+            <button type="button" onClick={() => go(1)} aria-label="Next testimonial" data-testid="testimonial-next" className="w-12 h-12 border border-black/20 flex items-center justify-center hover:bg-[#111] hover:text-white transition-colors"><ArrowRight size={18} /></button>
           </div>
         </div>
         <div className="min-h-[300px] sm:min-h-[260px] relative">
@@ -55,7 +55,7 @@ export const TestimonialSlider = () => {
         </div>
         <div className="mt-10 flex gap-2" role="tablist" aria-label="Testimonial pagination">
           {testimonials.map((x, k) => (
-            <button key={x.id} type="button" role="tab" aria-selected={k === i} aria-label={`Testimonial ${k + 1}`} onClick={() => { setDir(k > i ? 1 : -1); setI(k); }} className={`h-[3px] transition-all duration-500 ${k === i ? "w-12 bg-[#ff3131]" : "w-6 bg-white/20 hover:bg-white/40"}`} />
+            <button key={x.id} type="button" role="tab" aria-selected={k === i} aria-label={`Testimonial ${k + 1}`} onClick={() => { setDir(k > i ? 1 : -1); setI(k); }} className={`h-[3px] transition-all duration-500 ${k === i ? "w-12 bg-[#ff3131]" : "w-6 bg-black/20 hover:bg-black/40"}`} />
           ))}
         </div>
       </div>

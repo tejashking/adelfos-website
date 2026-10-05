@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { ContactShadows } from "@react-three/drei";
+import { useMotionValueEvent } from "framer-motion";
 import { BuildingModel } from "./BuildingModel";
 import { CameraRig } from "./CameraRig";
 import { Hotspot, HOTSPOTS } from "./Hotspot";
@@ -8,10 +9,17 @@ import { Hotspot, HOTSPOTS } from "./Hotspot";
 export default function RealEstateScene({ progressMV, mobile = false }) {
   const progress = useRef(0);
   const pointer = useRef({ x: 0, y: 0 });
-  const [p, setP] = useState(0);
   const wrap = useRef(null);
+  const lastHotspotProgress = useRef(0);
+  const [hotspotProgress, setHotspotProgress] = useState(0);
 
-  useEffect(() => progressMV.on("change", (v) => { progress.current = v; setP(Math.round(v * 40) / 40); }), [progressMV]);
+  useMotionValueEvent(progressMV, "change", (v) => {
+    progress.current = v;
+    if (Math.abs(v - lastHotspotProgress.current) > 0.015) {
+      lastHotspotProgress.current = v;
+      setHotspotProgress(v);
+    }
+  });
 
   useEffect(() => {
     const el = wrap.current; if (!el) return;
@@ -44,7 +52,7 @@ export default function RealEstateScene({ progressMV, mobile = false }) {
         </Suspense>
         <hemisphereLight args={["#2a2a33", "#000000", 0.5]} />
         <CameraRig progress={progress} pointer={pointer} distance={mobile ? 1.5 : 1} />
-        {!mobile && HOTSPOTS.map((h) => <Hotspot key={h.id} h={h} progress={p} />)}
+        {!mobile && HOTSPOTS.map((h) => <Hotspot key={h.id} h={h} progress={hotspotProgress} />)}
       </Canvas>
     </div>
   );

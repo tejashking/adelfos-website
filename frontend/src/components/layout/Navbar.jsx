@@ -30,7 +30,7 @@ export const Navbar = () => {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 inset-x-0 z-[60] transition-[background-color,border-color,box-shadow] duration-500 ${scrolled || open ? "bg-white/90 backdrop-blur-md border-b border-[#e5e5e5] shadow-[0_10px_30px_-20px_rgba(0,0,0,0.25)]" : "bg-white/0 border-b border-transparent"}`}
+        className={`fixed top-0 inset-x-0 z-[60] transition-[background-color,border-color,box-shadow] duration-500 ${scrolled || open ? "bg-white/80 backdrop-blur-md border-b border-[#e5e5e5] shadow-[0_10px_30px_-20px_rgba(0,0,0,0.25)]" : "bg-transparent border-b border-transparent"}`}
       >
         <nav className={`container-x flex items-center justify-between transition-[padding] duration-500 ${scrolled ? "py-3" : "py-5"}`} aria-label="Primary">
           <Link to="/" className="flex items-center gap-3 group" data-testid="nav-logo" aria-label="Adelfos Marketing home">
@@ -45,7 +45,7 @@ export const Navbar = () => {
             ))}
             <li><NavLink to="/contact" data-testid="nav-link-contact" className={({ isActive }) => `link-underline text-sm font-semibold transition-colors ${isActive ? "text-[#ff3131]" : "text-neutral-700 hover:text-black"}`}>Contact</NavLink></li>
           </ul>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <div className="hidden sm:block"><Button to="/contact" className="!py-2.5 !px-5" data-testid="nav-cta" track="nav-cta">{site.ctaPrimary}</Button></div>
             <button
               type="button"

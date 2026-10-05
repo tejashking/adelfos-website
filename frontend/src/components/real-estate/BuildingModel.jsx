@@ -56,7 +56,24 @@ export function BuildingModel({ progress }) {
       <mesh position={[2.3, 0.7, 2.4]} material={dark}><boxGeometry args={[0.12, 1.3, 0.12]} /></mesh>
       <mesh position={[-1.5, 0.08, 3.4]} material={new THREE.MeshStandardMaterial({ color: "#123a4a", roughness: 0.1, metalness: 0.4 })}><boxGeometry args={[4.5, 0.06, 1.4]} /></mesh>
       <group ref={layers} visible={false}>
-        {[0, 1, 2].map((i) => <mesh key={i} position={[0, 0.4 + i * 0.5, 0]} material={new THREE.MeshBasicMaterial({ color: "#ff3131", wireframe: true, transparent: true, opacity: 0 })}><boxGeometry args={[7.2, 0.02, 4.6]} /></mesh>)}
+        {[0, 1, 2].map((i) => (
+          <mesh
+            key={i}
+            position={[0, 0.4 + i * 0.5, 0]}
+            material={new THREE.MeshBasicMaterial({
+              color: "#ff3131",
+              transparent: true,
+              opacity: 0,
+              depthWrite: false,
+              side: THREE.DoubleSide,
+              polygonOffset: true,
+              polygonOffsetFactor: 1.5,
+              polygonOffsetUnits: 1,
+            })}
+          >
+            <boxGeometry args={[7.2, 0.02, 4.6]} />
+          </mesh>
+        ))}
       </group>
     </group>
   );

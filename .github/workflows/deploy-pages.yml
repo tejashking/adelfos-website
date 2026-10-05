@@ -35,6 +35,31 @@ jobs:
         working-directory: frontend
         run: yarn install --frozen-lockfile
 
+      - name: Validate production backend URL
+        env:
+          REACT_APP_BACKEND_URL: ${{ vars.REACT_APP_BACKEND_URL }}
+        run: |
+          if [ -z "$REACT_APP_BACKEND_URL" ]; then
+            echo "::error::Set the repository Actions variable REACT_APP_BACKEND_URL to the public backend origin before deploying."
+            exit 1
+          fi
+          case "$REACT_APP_BACKEND_URL" in
+            https://*) ;;
+            *) echo "::error::REACT_APP_BACKEND_URL must use HTTPS."; exit 1 ;;
+          esac
+          if [[ "$REACT_APP_BACKEND_URL" == */ ]]; then
+            echo "::error::REACT_APP_BACKEND_URL must not end with a slash."
+            exit 1
+          fi
+
+      - name: Check production backend health
+        env:
+          REACT_APP_BACKEND_URL: ${{ vars.REACT_APP_BACKEND_URL }}
+        run: |
+          curl --fail --silent --show-error --retry 5 --retry-delay 10 --retry-all-errors --max-time 40 \
+            "$REACT_APP_BACKEND_URL/api/" --output "$RUNNER_TEMP/backend-health.json"
+          grep -Eq '"service"[[:space:]]*:[[:space:]]*"adelfos-api"' "$RUNNER_TEMP/backend-health.json"
+
       - name: Build frontend
         working-directory: frontend
         env:

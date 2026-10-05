@@ -25,6 +25,7 @@ const ScrollManager = () => {
 export const Layout = () => {
   const reduced = useReducedMotion();
   const { pathname } = useLocation();
+
   const content = (
     <>
       <ScrollManager />
@@ -38,5 +39,5 @@ export const Layout = () => {
     </>
   );
   if (reduced) return content;
-  return <ReactLenis root options={{ lerp: 0.08, duration: 1.45, smoothWheel: true, wheelMultiplier: 1.15, touchMultiplier: 1.1 }}>{content}</ReactLenis>;
+  return <ReactLenis root options={{ lerp: 0.08, duration: 0.9, smoothWheel: true, wheelMultiplier: 0.9, touchMultiplier: 1.15 }}>{content}</ReactLenis>;
 };

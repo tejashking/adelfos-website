@@ -11,16 +11,19 @@ yarn build
 
 Deploy the generated `frontend/build/` directory to a static host such as Netlify, Vercel, Cloudflare Pages, or S3.
 
-Set `REACT_APP_BACKEND_URL` before building when the API is hosted separately. Leave it empty when the frontend and API share the same origin with `/api` reverse-proxying.
+Set `REACT_APP_BACKEND_URL` to the public HTTPS origin of the deployed API before building, without a trailing slash. For GitHub Pages, configure it as a repository Actions variable; Pages cannot serve `/api` itself, and the deploy workflow fails if the value is missing. Configure backend `CORS_ORIGINS` to include `https://adelfosmarketing.com`.
 
 ## Backend deployment
 
-From `backend/`, install `requirements.txt` and run:
+The production API is configured by the repository's `render.yaml` Blueprint. During setup, provide a production MongoDB `MONGO_URL` and a long random `ADMIN_API_TOKEN`. Production startup refuses to use the in-memory fallback.
+
+Point the `api` DNS record at the hostname provided by Render, then set the GitHub Actions repository variable `REACT_APP_BACKEND_URL` to `https://api.adelfosmarketing.com` and redeploy Pages. See [DEPLOYMENT.md](DEPLOYMENT.md) for the full sequence and the selected free-plan cold-start limitation.
+
+For local development, copy `backend/.env.example` to `backend/.env` and run:
 
 ```powershell
-python -m uvicorn server:app --host 0.0.0.0 --port 8000
+cd backend
+python -m uvicorn server:app --host 127.0.0.1 --port 8000
 ```
-
-Copy `backend/.env.example` to `backend/.env` locally, or configure the same values in the hosting provider's environment settings. Use a real `MONGO_URL` in production because the in-memory fallback is cleared when the server restarts.
 
 The API health checks are available at `/api/` and `/`.

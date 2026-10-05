@@ -27,6 +27,9 @@ file_env = dotenv_values(ROOT_DIR / '.env')
 MONGO_URL = os.environ.get('MONGO_URL')
 DB_NAME = os.environ.get('DB_NAME') or 'adelfos'
 
+if os.environ.get('APP_ENV') == 'production' and not MONGO_URL:
+    raise RuntimeError('MONGO_URL is required in production to persist leads and audits.')
+
 
 class MemoryCollection:
     def __init__(self):

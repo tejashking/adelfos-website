@@ -33,10 +33,17 @@ export const RealEstateSection = () => {
   const [near, setNear] = useState(false);
   const [webgl, setWebgl] = useState(true);
   const [stage, setStage] = useState(0);
+  const stageRef = useRef(0);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   const labelOpacity = useTransform(scrollYProgress, [0.6, 0.72], [0, 1]);
   const ctaOpacity = useTransform(scrollYProgress, [0.82, 0.95], [0, 1]);
-  useMotionValueEvent(scrollYProgress, "change", (v) => setStage(Math.min(5, Math.floor(v * 6))));
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    const next = Math.min(5, Math.max(0, Math.floor(v * 6)));
+    if (next !== stageRef.current) {
+      stageRef.current = next;
+      setStage(next);
+    }
+  });
 
   useEffect(() => {
     setWebgl(hasWebGL());
@@ -68,8 +75,8 @@ export const RealEstateSection = () => {
                 <p className="mt-4 text-neutral-300 max-w-md text-base sm:text-lg leading-relaxed">{STAGES[stage].body}</p>
               </motion.div>
               <motion.div style={{ opacity: reduced ? 1 : ctaOpacity }} className="mt-8 flex flex-wrap gap-3 pointer-events-auto">
-                <Button to="/services/real-estate" variant="dark" className="!px-4 !py-2.5 !text-[11px] !tracking-[0.22em] !uppercase" data-testid="real-estate-cta">Explore</Button>
-                <Button to="/work/northline-developments" variant="outlineDark" className="!px-4 !py-2.5 !text-[11px] !tracking-[0.22em] !uppercase !bg-white/5 !border-white/70 !text-white hover:!bg-white hover:!text-black" data-testid="real-estate-case">See a demo project</Button>
+                <Button to="/services/real-estate" variant="dark" className="!min-h-[2.75rem] !px-4 !py-2 !text-[10px] !tracking-[0.22em] !uppercase" data-testid="real-estate-cta">Explore</Button>
+                <Button to="/work/northline-developments" variant="outlineDark" className="!min-h-[2.75rem] !px-4 !py-2 !text-[10px] !tracking-[0.22em] !uppercase !bg-white/8 !border-white/80 !text-white hover:!bg-white hover:!text-black" data-testid="real-estate-case">See a demo project</Button>
               </motion.div>
             </div>
             <motion.ul style={{ opacity: reduced ? 1 : labelOpacity }} className="lg:col-span-5 lg:col-start-8 flex flex-wrap lg:flex-col gap-2 lg:gap-3 lg:items-end" aria-label="Real estate marketing capabilities">
