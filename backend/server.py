@@ -188,10 +188,11 @@ class LeadStatusUpdate(BaseModel):
         return v
 
 
-def rate_limited(ip: str) -> bool:
+def rate_limited(ip: str, scope: str = "generic") -> bool:
     now = time.time()
-    hits = [t for t in _rate.get(ip, []) if now - t < 3600]
-    _rate[ip] = hits
+    key = f"{scope}:{ip}"
+    hits = [t for t in _rate.get(key, []) if now - t < 3600]
+    _rate[key] = hits
     if len(hits) >= 5:
         return True
     hits.append(now)
@@ -248,7 +249,7 @@ async def create_contact(payload: ContactCreate, request: Request):
     if payload.started_at and (time.time() * 1000 - payload.started_at) < 2500:
         raise HTTPException(status_code=400, detail="Form submitted too quickly")
     ip = request.headers.get("x-forwarded-for", request.client.host if request.client else "unknown").split(",")[0].strip()
-    if rate_limited(ip):
+    if rate_limited(ip, "contact"):
         raise HTTPException(status_code=429, detail="Too many submissions. Please try again later.")
     sub = ContactSubmission(
         name=clean(payload.name, 120), email=payload.email.lower(), phone=clean(payload.phone, 40),
@@ -335,7 +336,7 @@ async def create_audit(payload: AuditCreate, request: Request):
         raise HTTPException(status_code=400, detail="Form submitted too quickly")
 
     ip = request.headers.get("x-forwarded-for", request.client.host if request.client else "unknown").split(",")[0].strip()
-    if rate_limited(ip):
+    if rate_limited(ip, "audit"):
         raise HTTPException(status_code=429, detail="Too many submissions. Please try again later.")
 
     score, issues, recommendations = build_audit_analysis(payload)
