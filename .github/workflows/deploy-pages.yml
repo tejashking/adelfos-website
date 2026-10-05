@@ -39,10 +39,11 @@ jobs:
         working-directory: frontend
         env:
           REACT_APP_BACKEND_URL: ${{ vars.REACT_APP_BACKEND_URL }}
-          REACT_APP_SITE_URL: https://tejashking.github.io/adelfos-website
+          REACT_APP_SITE_URL: https://adelfosmarketing.com
         run: |
           yarn build
           cp build/index.html build/404.html
+          printf '%s\n' 'adelfosmarketing.com' > build/CNAME
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
