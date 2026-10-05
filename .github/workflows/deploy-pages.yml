@@ -35,7 +35,19 @@ jobs:
         working-directory: frontend
         run: yarn install --frozen-lockfile
 
+      - name: Detect construction mode
+        id: construction-mode
+        run: |
+          if grep -Eq '^[[:space:]]*export const UNDER_CONSTRUCTION_MODE = true;[[:space:]]*$' frontend/src/config/construction.js; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+            echo "Under-construction mode is enabled; backend checks will be skipped."
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "Under-construction mode is disabled; backend checks are required."
+          fi
+
       - name: Validate production backend URL
+        if: steps.construction-mode.outputs.enabled != 'true'
         env:
           REACT_APP_BACKEND_URL: ${{ vars.REACT_APP_BACKEND_URL }}
         run: |
@@ -53,6 +65,7 @@ jobs:
           fi
 
       - name: Check production backend health
+        if: steps.construction-mode.outputs.enabled != 'true'
         env:
           REACT_APP_BACKEND_URL: ${{ vars.REACT_APP_BACKEND_URL }}
         run: |
