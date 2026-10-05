@@ -47,7 +47,7 @@ jobs:
           fi
 
       - name: Validate production backend URL
-          if: steps.construction-mode.outputs.enabled == 'false'
+        if: steps.construction-mode.outputs.enabled == 'false'
         env:
           REACT_APP_BACKEND_URL: ${{ vars.REACT_APP_BACKEND_URL }}
         run: |
@@ -65,7 +65,7 @@ jobs:
           fi
 
       - name: Check production backend health
-          if: steps.construction-mode.outputs.enabled == 'false'
+        if: steps.construction-mode.outputs.enabled == 'false'
         env:
           REACT_APP_BACKEND_URL: ${{ vars.REACT_APP_BACKEND_URL }}
         run: |
