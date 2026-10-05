@@ -1,6 +1,8 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { UnderConstructionOverlay } from "@/components/construction/UnderConstructionOverlay";
+import { UNDER_CONSTRUCTION_MODE } from "@/config/construction";
 
 const Home = lazy(() => import("@/pages/Home"));
 const About = lazy(() => import("@/pages/About"));
@@ -19,6 +21,10 @@ const NotFound = lazy(() => import("@/pages/NotFound"));
 const Fallback = () => <div className="min-h-screen bg-black" aria-busy="true" />;
 
 export default function App() {
+  if (UNDER_CONSTRUCTION_MODE) {
+    return <UnderConstructionOverlay />;
+  }
+
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL || "/"}>
       <Suspense fallback={<Fallback />}>
