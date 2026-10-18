@@ -46,8 +46,20 @@ jobs:
             echo "Under-construction mode is disabled; backend checks are required."
           fi
 
+      - name: Detect production backend URL
+        id: backend-url
+        env:
+          REACT_APP_BACKEND_URL: ${{ vars.REACT_APP_BACKEND_URL }}
+        run: |
+          if [ -z "$REACT_APP_BACKEND_URL" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::REACT_APP_BACKEND_URL is not configured. The website will deploy, but contact and audit submissions need the API."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Validate production backend URL
-        if: steps.construction-mode.outputs.enabled == 'false'
+        if: steps.construction-mode.outputs.enabled == 'false' && steps.backend-url.outputs.configured == 'true'
         env:
           REACT_APP_BACKEND_URL: ${{ vars.REACT_APP_BACKEND_URL }}
         run: |
@@ -65,7 +77,7 @@ jobs:
           fi
 
       - name: Check production backend health
-        if: steps.construction-mode.outputs.enabled == 'false'
+        if: steps.construction-mode.outputs.enabled == 'false' && steps.backend-url.outputs.configured == 'true'
         env:
           REACT_APP_BACKEND_URL: ${{ vars.REACT_APP_BACKEND_URL }}
         run: |
