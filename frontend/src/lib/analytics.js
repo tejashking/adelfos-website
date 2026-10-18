@@ -1,6 +1,7 @@
 const GA4 = process.env.REACT_APP_GA4_ID;
 const ADS = process.env.REACT_APP_GOOGLE_ADS_ID;
 const ADS_LABEL = process.env.REACT_APP_GOOGLE_ADS_CONVERSION_LABEL;
+const CALENDLY_ADS_LABEL = process.env.REACT_APP_GOOGLE_ADS_CALENDLY_CONVERSION_LABEL;
 const PIXEL = process.env.REACT_APP_META_PIXEL_ID;
 
 let initialised = false;
@@ -35,7 +36,11 @@ export function trackPageView(path) {
 export function trackEvent(name, params = {}) {
   if (window.gtag) window.gtag("event", name, params);
   if (window.fbq && name === "contact_submit") window.fbq("track", "Lead", params);
+  if (window.fbq && name === "calendly_booking_completed") window.fbq("track", "Schedule", params);
   if (window.gtag && ADS && ADS_LABEL && name === "contact_submit") {
     window.gtag("event", "conversion", { send_to: `${ADS}/${ADS_LABEL}` });
+  }
+  if (window.gtag && ADS && CALENDLY_ADS_LABEL && name === "calendly_booking_completed") {
+    window.gtag("event", "conversion", { send_to: `${ADS}/${CALENDLY_ADS_LABEL}` });
   }
 }

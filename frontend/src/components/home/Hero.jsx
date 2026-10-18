@@ -40,7 +40,7 @@ export const Hero = ({ ready = true }) => {
               {POINTS.map((p) => <li key={p} className="flex items-start gap-3 bg-[#f7f7f7] rounded-md px-4 py-3 text-sm font-semibold text-[#111]"><CheckCircle2 size={18} className="text-[#ff3131] shrink-0 mt-0.5" aria-hidden="true" />{p}</li>)}
             </motion.ul>
             <motion.div variants={textRevealVariants.fade} className="mt-10 flex flex-wrap gap-4">
-              <Button to="/contact" data-testid="hero-cta-primary" track="hero-primary">{site.ctaPrimary}</Button>
+              <Button to="/book-a-call" data-testid="hero-cta-primary" track="hero-book-call">Book a consultation</Button>
               <Button to="/work" variant="outline" data-testid="hero-cta-secondary" track="hero-secondary">{site.ctaSecondary}</Button>
             </motion.div>
           </motion.div>

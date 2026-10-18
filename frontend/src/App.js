@@ -13,6 +13,7 @@ const CaseStudy = lazy(() => import("@/pages/CaseStudy"));
 const Insights = lazy(() => import("@/pages/Insights"));
 const Article = lazy(() => import("@/pages/Article"));
 const Contact = lazy(() => import("@/pages/Contact"));
+const BookCall = lazy(() => import("@/pages/BookCall"));
 const Audit = lazy(() => import("@/pages/Audit"));
 const AdminAudits = lazy(() => import("@/pages/AdminAudits"));
 const Legal = lazy(() => import("@/pages/Legal"));
@@ -39,6 +40,7 @@ export default function App() {
             <Route path="insights" element={<Insights />} />
             <Route path="insights/:slug" element={<Article />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="book-a-call" element={<BookCall />} />
             <Route path="audit" element={<Audit />} />
             <Route path="admin/audits" element={<AdminAudits />} />
             <Route path="privacy" element={<Legal kind="privacy" />} />

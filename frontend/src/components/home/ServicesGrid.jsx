@@ -28,7 +28,7 @@ export const ServicesGrid = () => (
         <StaggerItem>
           <div className="card h-full p-7 lg:p-8 bg-[#111] text-white flex flex-col justify-between border-[#111]">
             <div><p className="eyebrow">Not sure where to start?</p><h3 className="font-display font-bold text-xl sm:text-2xl tracking-tight mt-4">Get a growth plan tailored to your business.</h3></div>
-            <div className="mt-8"><Button to="/contact" data-testid="services-grid-cta" track="services-grid-cta">Start a project</Button></div>
+            <div className="mt-8"><Button to="/book-a-call" data-testid="services-grid-cta" track="services-grid-book-call">Book a consultation</Button></div>
           </div>
         </StaggerItem>
       </Stagger>

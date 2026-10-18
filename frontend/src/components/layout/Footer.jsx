@@ -25,7 +25,7 @@ export const Footer = () => {
           <div className="lg:col-span-2 lg:col-start-7">
             <h3 className="eyebrow mb-6">Navigate</h3>
             <ul className="space-y-3">
-              {[{ label: "Home", to: "/" }, ...nav, { label: "Contact", to: "/contact" }].map((n) => (
+              {[{ label: "Home", to: "/" }, ...nav, { label: "Book a call", to: "/book-a-call" }, { label: "Contact", to: "/contact" }].map((n) => (
                 <li key={n.to}><Link to={n.to} className="link-underline text-sm text-neutral-300 hover:text-white" data-testid={`footer-nav-${n.label.toLowerCase()}`}>{n.label}</Link></li>
               ))}
             </ul>

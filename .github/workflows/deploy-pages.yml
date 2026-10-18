@@ -90,6 +90,12 @@ jobs:
         env:
           REACT_APP_BACKEND_URL: ${{ vars.REACT_APP_BACKEND_URL }}
           REACT_APP_SITE_URL: https://adelfosmarketing.com
+          REACT_APP_CALENDLY_URL: ${{ vars.REACT_APP_CALENDLY_URL }}
+          REACT_APP_GOOGLE_ADS_ID: ${{ vars.REACT_APP_GOOGLE_ADS_ID }}
+          REACT_APP_GOOGLE_ADS_CONVERSION_LABEL: ${{ vars.REACT_APP_GOOGLE_ADS_CONVERSION_LABEL }}
+          REACT_APP_GOOGLE_ADS_CALENDLY_CONVERSION_LABEL: ${{ vars.REACT_APP_GOOGLE_ADS_CALENDLY_CONVERSION_LABEL }}
+          REACT_APP_GA4_ID: ${{ vars.REACT_APP_GA4_ID }}
+          REACT_APP_META_PIXEL_ID: ${{ vars.REACT_APP_META_PIXEL_ID }}
         run: |
           yarn build
           cp build/404/index.html build/404.html

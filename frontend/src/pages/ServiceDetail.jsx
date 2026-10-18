@@ -37,7 +37,7 @@ export default function ServiceDetail() {
     <>
       <SEO title={s.seoTitle} description={s.seoDescription} path={`/services/${s.slug}`} image={s.image} jsonLd={[ld, breadcrumbLd(crumbs)]} />
       <PageHero crumbs={crumbs} eyebrow={`Service ${s.n} / 11`} lines={s.heroLine} body={s.heroDescription}>
-        <div className="mt-8 flex flex-wrap gap-4"><Link to="/contact" className="btn btn-primary" data-testid="service-hero-cta"><span>{site.ctaPrimary}</span><ArrowUpRight size={16} className="arrow" /></Link></div>
+        <div className="mt-8 flex flex-wrap gap-4"><Link to="/book-a-call" className="btn btn-primary" data-testid="service-hero-cta"><span>Book a consultation</span><ArrowUpRight size={16} className="arrow" /></Link></div>
       </PageHero>
 
       <ScrollReveal className="container-x"><div className="aspect-[21/9] overflow-hidden relative"><img src={s.image} alt={`${s.title} — Adelfos Marketing Calgary`} className="w-full h-full object-cover img-editorial" /><span className="absolute inset-0 border border-white/10 pointer-events-none" /></div></ScrollReveal>

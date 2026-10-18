@@ -46,7 +46,7 @@ export const Navbar = () => {
             <li><NavLink to="/contact" data-testid="nav-link-contact" className={({ isActive }) => `link-underline text-sm font-semibold transition-colors ${isActive ? "text-[#ff3131]" : "text-neutral-700 hover:text-black"}`}>Contact</NavLink></li>
           </ul>
           <div className="flex items-center gap-3 sm:gap-4">
-            <div className="hidden sm:block"><Button to="/contact" className="!py-2.5 !px-5" data-testid="nav-cta" track="nav-cta">{site.ctaPrimary}</Button></div>
+            <div className="hidden sm:block"><Button to="/book-a-call" className="!py-2.5 !px-5" data-testid="nav-cta" track="nav-book-call">Book a call</Button></div>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}

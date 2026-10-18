@@ -5,7 +5,7 @@ import { useParallax } from "@/hooks/useAnimation";
 import { motion } from "framer-motion";
 import { site } from "@/data/site";
 
-export const CTASection = ({ eyebrow = "Next step", lines = ["Let's build something", "worth remembering."], body = "Tell us about your business, your market and what growth looks like. We will come back with a point of view, not a pitch deck.", primary = { label: site.ctaPrimary, to: "/contact" }, secondary = { label: "WhatsApp us", href: site.whatsappUrl }, light = false }) => {
+export const CTASection = ({ eyebrow = "Next step", lines = ["Let's build something", "worth remembering."], body = "Tell us about your business, your market and what growth looks like. We will come back with a point of view, not a pitch deck.", primary = { label: "Book a consultation", to: "/book-a-call" }, secondary = { label: "WhatsApp us", href: site.whatsappUrl }, light = false }) => {
   const { ref, y } = useParallax(60);
   return (
     <section ref={ref} data-testid="final-cta-section" className={`relative overflow-hidden ${light ? "bg-[#f7f7f7] text-black" : "bg-black text-white border-t border-[#1f1f1f]"}`}>

@@ -38,7 +38,7 @@ export const MobileMenu = ({ onClose }) => {
         ))}
       </ul>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="mt-auto pt-10 flex flex-col gap-6">
-        <Link to="/contact" onClick={onClose} className="btn btn-primary w-full" data-testid="mobile-menu-cta"><span>{site.ctaPrimary}</span><span aria-hidden="true">→</span></Link>
+        <Link to="/book-a-call" onClick={onClose} className="btn btn-primary w-full" data-testid="mobile-menu-cta"><span>Book a call</span><span aria-hidden="true">→</span></Link>
         <div className="flex flex-col gap-1 font-mono text-xs text-neutral-500 uppercase tracking-widest">
           <a href={`mailto:${site.email}`} className="hover:text-white">{site.email}</a>
           <a href={site.whatsappUrl} className="hover:text-white">WhatsApp {site.whatsappDisplay}</a>
