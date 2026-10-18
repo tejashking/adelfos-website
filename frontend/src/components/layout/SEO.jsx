@@ -16,7 +16,6 @@ const ORG = {
   address: { "@type": "PostalAddress", addressLocality: site.location.city, addressRegion: site.location.regionCode, addressCountry: site.location.countryCode },
   areaServed: [{ "@type": "City", name: "Calgary" }, { "@type": "AdministrativeArea", name: "Alberta" }],
   sameAs: site.social.map((s) => s.href),
-  openingHours: "Mo-Fr By appointment",
 };
 
 const WEBSITE = { "@context": "https://schema.org", "@type": "WebSite", "@id": `${site.url}/#website`, url: site.url, name: site.name, publisher: { "@id": `${site.url}/#organization` } };

@@ -17,7 +17,7 @@ export default function Home() {
   const [ready, setReady] = useState(() => !!sessionStorage.getItem("adelfos-loaded"));
   return (
     <>
-      <SEO title="Adelfos Marketing | Calgary Marketing Agency" description="Adelfos Marketing is a Calgary digital marketing agency building digital empires for local business: digital advertising, SEO, web design, brand building, app development and real estate marketing." path="/" />
+      <SEO title="Calgary Digital Marketing Agency | Adelfos Marketing" description="Adelfos Marketing helps Calgary businesses grow through SEO, digital advertising, web design, brand strategy and real estate marketing." path="/" />
       <LoadingScreen onDone={() => setReady(true)} />
       <Hero ready={ready} />
       <TrustBar />

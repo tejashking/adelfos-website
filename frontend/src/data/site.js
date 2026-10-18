@@ -8,7 +8,7 @@ export const site = {
   positioning: "We build digital empires for local business.",
   tagline: "Beyond boundaries, beyond expectation.",
   description:
-    "Adelfos Marketing is a Calgary marketing agency combining strategy, creative, technology and performance to grow local businesses across Alberta.",
+    "Adelfos Marketing helps Calgary businesses grow through SEO, digital advertising, web design, brand strategy and real estate marketing.",
   email: "adelfosmarketing@gmail.com",
   whatsapp: "+13062506732",
   whatsappDisplay: "+1 (306) 250-6732",
