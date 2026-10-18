@@ -5,6 +5,7 @@ import { z } from "zod";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
+import { site } from "@/data/site";
 import { trackEvent } from "@/lib/analytics";
 
 const API = `${process.env.REACT_APP_BACKEND_URL || ""}/api`;
@@ -42,6 +43,7 @@ export const AuditForm = () => {
   const started = useRef(Date.now());
   const [status, setStatus] = useState("idle");
   const [serverError, setServerError] = useState("");
+  const [fallbackEmail, setFallbackEmail] = useState("");
   const [result, setResult] = useState(null);
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: zodResolver(schema),
@@ -59,7 +61,19 @@ export const AuditForm = () => {
       reset();
     } catch (e) {
       setStatus("error");
-      setServerError(e.response?.data?.detail?.[0]?.msg || e.response?.data?.detail || "Something went wrong. Please try again or email us directly.");
+      setServerError(e.response?.data?.detail?.[0]?.msg || e.response?.data?.detail || "Your audit request was not sent. Contact us directly using either option below.");
+      const body = [
+        `Business: ${data.business_name}`,
+        `Website: ${data.website || "Not provided"}`,
+        `Industry: ${data.industry}`,
+        `City / service area: ${data.city}`,
+        `Email: ${data.email}`,
+        `Phone: ${data.phone || "Not provided"}`,
+        `Monthly budget: ${data.monthly_budget}`,
+        `Primary goal: ${data.primary_goal}`,
+        `Current channels: ${data.current_channels}`,
+      ].join("\n");
+      setFallbackEmail(`mailto:${site.email}?subject=${encodeURIComponent("Adelfos Marketing audit request")}&body=${encodeURIComponent(body)}`);
     }
   };
 
@@ -129,7 +143,7 @@ export const AuditForm = () => {
 
       <AnimatePresence>
         {status === "error" && (
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} role="alert" className="border border-[#ff3131]/60 bg-[#fff3f3] text-[#ff3131] text-sm p-4 rounded-lg">{serverError}</motion.p>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} role="alert" className="border border-[#ff3131]/60 bg-[#fff3f3] text-[#ff3131] text-sm p-4 rounded-lg"><p>{serverError}</p><div className="mt-3 flex flex-wrap gap-x-5 gap-y-2"><a href={fallbackEmail} className="link-underline">Email {site.email}</a><a href={site.whatsappUrl} target="_blank" rel="noreferrer" className="link-underline">Message us on WhatsApp</a></div></motion.div>
         )}
       </AnimatePresence>
 

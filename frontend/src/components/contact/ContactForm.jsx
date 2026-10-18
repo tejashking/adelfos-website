@@ -6,6 +6,7 @@ import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { services } from "@/data/services";
+import { site } from "@/data/site";
 import { trackEvent } from "@/lib/analytics";
 
 const API = `${process.env.REACT_APP_BACKEND_URL || ""}/api`;
@@ -36,6 +37,7 @@ export const ContactForm = () => {
   const started = useRef(Date.now());
   const [status, setStatus] = useState("idle");
   const [serverError, setServerError] = useState("");
+  const [fallbackEmail, setFallbackEmail] = useState("");
   const { register, handleSubmit, formState: { errors }, reset } = useForm({ resolver: zodResolver(schema), defaultValues: { service: "", budget: "" } });
 
   const onSubmit = async (data) => {
@@ -45,7 +47,19 @@ export const ContactForm = () => {
       setStatus("success"); trackEvent("contact_submit", { service: data.service }); reset();
     } catch (e) {
       setStatus("error");
-      setServerError(e.response?.data?.detail?.[0]?.msg || e.response?.data?.detail || "Something went wrong. Email us directly and we will reply quickly.");
+      setServerError(e.response?.data?.detail?.[0]?.msg || e.response?.data?.detail || "Your message was not sent. Contact us directly using either option below.");
+      const serviceName = services.find((service) => service.slug === data.service)?.title || data.service;
+      const body = [
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        `Phone: ${data.phone || "Not provided"}`,
+        `Company: ${data.company || "Not provided"}`,
+        `Website: ${data.website || "Not provided"}`,
+        `Service: ${serviceName}`,
+        `Budget: ${data.budget}`,
+        `Project details: ${data.details}`,
+      ].join("\n");
+      setFallbackEmail(`mailto:${site.email}?subject=${encodeURIComponent("Adelfos Marketing project inquiry")}&body=${encodeURIComponent(body)}`);
     }
   };
 
@@ -84,7 +98,7 @@ export const ContactForm = () => {
       </div>
       <Field id="details" label="Project details *" error={errors.details}><textarea id="details" rows={5} {...register("details")} className="field resize-none" placeholder="What are you trying to achieve? What is the timeline?" aria-invalid={!!errors.details} data-testid="textarea-details" /></Field>
       <div className="absolute opacity-0 -z-10 h-0 overflow-hidden" aria-hidden="true"><label htmlFor="website_url">Leave this empty</label><input id="website_url" tabIndex={-1} autoComplete="off" {...register("website_url")} /></div>
-      <AnimatePresence>{status === "error" && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} role="alert" data-testid="contact-error" className="border border-[#ff3131]/60 text-[#ff3131] text-sm p-4">{serverError}</motion.p>}</AnimatePresence>
+      <AnimatePresence>{status === "error" && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} role="alert" data-testid="contact-error" className="border border-[#ff3131]/60 text-[#ff3131] text-sm p-4"><p>{serverError}</p><div className="mt-3 flex flex-wrap gap-x-5 gap-y-2"><a href={fallbackEmail} className="link-underline">Email {site.email}</a><a href={site.whatsappUrl} target="_blank" rel="noreferrer" className="link-underline">Message us on WhatsApp</a></div></motion.div>}</AnimatePresence>
       <div className="flex flex-col sm:flex-row sm:items-center gap-6">
         <button type="submit" disabled={status === "loading"} data-testid="contact-submit" className="btn btn-primary disabled:opacity-60 disabled:cursor-not-allowed">
           <span>{status === "loading" ? "Sending" : "Start the conversation"}</span>

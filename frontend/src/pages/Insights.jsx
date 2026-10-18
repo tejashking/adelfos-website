@@ -10,7 +10,7 @@ export default function Insights() {
   const [first, ...rest] = articles;
   return (
     <>
-      <SEO title="Marketing Insights for Calgary Businesses" description="Read practical advice on SEO, digital advertising, website conversion and real estate marketing for Calgary and Alberta businesses." path="/insights" jsonLd={[breadcrumbLd(crumbs)]} />
+      <SEO title="Marketing Insights for Calgary Businesses" description="Read practical advice on SEO, digital advertising, website conversion and real estate marketing for Calgary and Alberta businesses." path="/insights" noindex jsonLd={[breadcrumbLd(crumbs)]} />
       <PageHero crumbs={crumbs} eyebrow="Insights" lines={["Marketing insights", "for Calgary businesses."]} body="Practical perspectives on how local businesses in Calgary can get found, be remembered and convert more of the attention they earn." />
       <section className="bg-white border-t border-[#e5e5e5]">
         <div className="container-x py-20 lg:py-28">
