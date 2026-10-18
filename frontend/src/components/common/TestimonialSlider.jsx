@@ -7,16 +7,22 @@ import { Eyebrow, DemoBadge } from "./Motion";
 import { LogoMark } from "./LogoMark";
 
 export const TestimonialSlider = () => {
+  const verifiedTestimonials = testimonials.filter((testimonial) => testimonial.status === "approved" || testimonial.status === "live");
   const [i, setI] = useState(0);
   const [dir, setDir] = useState(1);
-  const go = useCallback((d) => { setDir(d); setI((v) => (v + d + testimonials.length) % testimonials.length); }, []);
+  const go = useCallback((d) => {
+    if (!verifiedTestimonials.length) return;
+    setDir(d);
+    setI((v) => (v + d + verifiedTestimonials.length) % verifiedTestimonials.length);
+  }, [verifiedTestimonials.length]);
   useEffect(() => {
     const onKey = (e) => { if (e.key === "ArrowRight") go(1); if (e.key === "ArrowLeft") go(-1); };
     const el = document.getElementById("testimonials");
     el?.addEventListener("keydown", onKey);
     return () => el?.removeEventListener("keydown", onKey);
   }, [go]);
-  const t = testimonials[i];
+  if (!verifiedTestimonials.length) return null;
+  const t = verifiedTestimonials[i];
   return (
     <section id="testimonials" data-testid="testimonials-section" tabIndex={0} aria-roledescription="carousel" aria-label="Client testimonials" className="bg-[#f7f7f7] text-black relative overflow-hidden focus:outline-none">
       <LogoMark size={420} color="#000" className="absolute -left-32 -top-32 opacity-[0.04] pointer-events-none" />
@@ -54,7 +60,7 @@ export const TestimonialSlider = () => {
           </AnimatePresence>
         </div>
         <div className="mt-10 flex gap-2" role="tablist" aria-label="Testimonial pagination">
-          {testimonials.map((x, k) => (
+          {verifiedTestimonials.map((x, k) => (
             <button key={x.id} type="button" role="tab" aria-selected={k === i} aria-label={`Testimonial ${k + 1}`} onClick={() => { setDir(k > i ? 1 : -1); setI(k); }} className={`h-[3px] transition-all duration-500 ${k === i ? "w-12 bg-[#ff3131]" : "w-6 bg-black/20 hover:bg-black/40"}`} />
           ))}
         </div>

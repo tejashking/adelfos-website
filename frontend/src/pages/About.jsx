@@ -20,8 +20,8 @@ export default function About() {
   const { ref, y } = useParallax(50);
   return (
     <>
-      <SEO title="About Adelfos Marketing | Calgary Creative & Performance Agency" description="Adelfos Marketing is a Calgary-based agency combining strategy, creative, technology and performance to build digital empires for local businesses across Alberta." path="/about" jsonLd={[breadcrumbLd(crumbs)]} />
-      <PageHero crumbs={crumbs} eyebrow="About" lines={["Beyond boundaries,", "beyond expectation."]} body="Adelfos Marketing was built on a simple observation: local businesses deserve the same strategic and creative standard as national brands. We bring that standard to Calgary, without the agency theatre." />
+      <SEO title="About Adelfos Marketing | Calgary Agency" description="Adelfos Marketing is a Calgary agency combining strategy, creative, technology and performance to help local businesses get found and convert." path="/about" jsonLd={[breadcrumbLd(crumbs)]} />
+      <PageHero crumbs={crumbs} eyebrow="About Adelfos Marketing" lines={["A Calgary agency", "built for local business."]} body="Local businesses deserve the same strategic and creative standard as national brands. We bring strategy, design, technology and performance together in Calgary." />
       <Marquee items={["Strategy", "Creative", "Technology", "Performance"]} className="border-y border-[#e5e5e5] py-5 font-display font-bold text-lg sm:text-2xl tracking-tight text-neutral-500" duration={30} />
       <section ref={ref} className="bg-white"><div className="container-x section-pad grid lg:grid-cols-12 gap-12 items-start">
         <div className="lg:col-span-5"><Eyebrow>Who we are</Eyebrow><AnimatedHeading lines={["A creative", "technology agency", "for local business."]} className="display-md mt-6" /></div>
@@ -32,7 +32,7 @@ export default function About() {
         </div>
         <motion.div style={{ y }} className="lg:col-span-12 grid sm:grid-cols-2 gap-6 mt-8">
           <div className="aspect-[4/3] overflow-hidden"><img src="https://images.unsplash.com/photo-1688071458340-448d56949b79?auto=format&fit=crop&w=1400&q=80" alt="Calgary skyline" className="w-full h-full object-cover img-editorial" loading="lazy" /></div>
-          <div className="aspect-[4/3] overflow-hidden sm:mt-16"><img src="https://images.unsplash.com/photo-1700672481083-edffef7d5282?auto=format&fit=crop&w=1400&q=80" alt="Creative team collaborating in a studio" className="w-full h-full object-cover img-editorial" loading="lazy" /></div>
+          <div className="aspect-[4/3] overflow-hidden sm:mt-16"><img src="https://images.unsplash.com/photo-1700672481083-edffef7d5282?auto=format&fit=crop&w=1400&q=80" alt="Illustrative studio scene representing collaborative creative work" className="w-full h-full object-cover img-editorial" loading="lazy" /></div>
         </motion.div>
       </div></section>
       <section className="bg-[#f7f7f7] text-black"><div className="container-x section-pad">

@@ -10,8 +10,8 @@ export default function Insights() {
   const [first, ...rest] = articles;
   return (
     <>
-      <SEO title="Insights | Digital Marketing Thinking for Calgary Businesses" description="Articles from Adelfos Marketing on digital advertising, local SEO, web conversion and real estate marketing for Calgary and Alberta businesses." path="/insights" jsonLd={[breadcrumbLd(crumbs)]} />
-      <PageHero crumbs={crumbs} eyebrow="Insights" lines={["Thinking,", "published."]} body="Practical perspectives on how local businesses in Calgary can get found, be remembered and convert more of the attention they earn." />
+      <SEO title="Marketing Insights for Calgary Businesses" description="Read practical advice on SEO, digital advertising, website conversion and real estate marketing for Calgary and Alberta businesses." path="/insights" jsonLd={[breadcrumbLd(crumbs)]} />
+      <PageHero crumbs={crumbs} eyebrow="Insights" lines={["Marketing insights", "for Calgary businesses."]} body="Practical perspectives on how local businesses in Calgary can get found, be remembered and convert more of the attention they earn." />
       <section className="bg-white border-t border-[#e5e5e5]">
         <div className="container-x py-20 lg:py-28">
           <ArticleCard a={first} featured />

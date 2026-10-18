@@ -16,6 +16,8 @@ const Stat = ({ s, start, i }) => {
 
 export const Stats = () => {
   const [ref, inView] = useScrollReveal();
+  const verifiedStats = stats.filter((stat) => !stat.demo);
+  if (!verifiedStats.length) return null;
   return (
     <section ref={ref} data-testid="metrics-section" className="bg-white border-t border-[#e5e5e5]">
       <div className="container-x section-pad">
@@ -28,7 +30,7 @@ export const Stats = () => {
           </div>
         </div>
         <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-8 lg:grid-cols-4 lg:gap-4">
-          {stats.map((s, i) => <Stat key={s.label} s={s} start={inView} i={i} />)}
+          {verifiedStats.map((s, i) => <Stat key={s.label} s={s} start={inView} i={i} />)}
         </div>
       </div>
     </section>

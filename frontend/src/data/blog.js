@@ -20,6 +20,9 @@ const u = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1600
 export const articles = [
   {
     title: "How Local Businesses in Calgary Can Build a Stronger Digital Presence",
+    seoTitle: "Digital Presence for Calgary Businesses",
+    seoDescription: "Learn how Calgary businesses can build online visibility, credibility and conversion with a practical digital presence strategy.",
+    seoApproved: false,
     slug: "calgary-local-business-digital-presence",
     excerpt: "Visibility, credibility and conversion are three different problems. Here is how Calgary businesses can solve them in the right order.",
     category: "Strategy", date: "2026-05-12", author: "Adelfos Marketing", readTime: "6 min", heroImage: u("photo-1688071458340-448d56949b79"),
@@ -32,6 +35,9 @@ export const articles = [
   },
   {
     title: "Google Ads vs Meta Ads: Which Is Better for Calgary Businesses?",
+    seoTitle: "Google Ads vs Meta Ads in Calgary",
+    seoDescription: "Compare Google Ads and Meta Ads for Calgary businesses. Learn which channel fits your customers, buying cycle and lead-generation goals.",
+    seoApproved: false,
     slug: "google-ads-vs-meta-ads-calgary",
     excerpt: "One captures demand, the other creates it. The right answer depends on how your customers buy.",
     category: "Digital Advertising", date: "2026-04-28", author: "Adelfos Marketing", readTime: "7 min", heroImage: u("photo-1460925895917-afdab827c52f"),
@@ -44,6 +50,9 @@ export const articles = [
   },
   {
     title: "How Local SEO Helps Calgary Businesses Generate High-Intent Leads",
+    seoTitle: "Local SEO Leads for Calgary Businesses",
+    seoDescription: "Learn how Calgary businesses can use local SEO, Google Business Profile and useful service pages to appear in high-intent searches and attract leads.",
+    seoApproved: false,
     slug: "local-seo-calgary-high-intent-leads",
     excerpt: "Local SEO is the most cost-efficient channel most Calgary businesses underinvest in. Here is what it involves.",
     category: "SEO", date: "2026-04-09", author: "Adelfos Marketing", readTime: "6 min", heroImage: u("photo-1432888622747-4eb9a8efeb07"),
@@ -56,6 +65,9 @@ export const articles = [
   },
   {
     title: "7 Website Conversion Mistakes That Cost Local Businesses Customers",
+    seoTitle: "Website Conversion Mistakes to Fix",
+    seoDescription: "Find seven website conversion mistakes that cost local businesses leads, from unclear headlines and forms to slow mobile pages and missing proof.",
+    seoApproved: false,
     slug: "website-conversion-mistakes-local-businesses",
     excerpt: "Traffic is expensive. These common mistakes waste it, and every one of them is fixable.",
     category: "Conversion", date: "2026-03-21", author: "Adelfos Marketing", readTime: "5 min", heroImage: u("photo-1551288049-bebda4e38f71"),
@@ -72,6 +84,9 @@ export const articles = [
   },
   {
     title: "Real Estate Marketing in Calgary: From Listing to Lead Generation",
+    seoTitle: "Real Estate Marketing Calgary",
+    seoDescription: "Explore how Calgary developers, brokerages and agents can use positioning, property visuals and digital campaigns to turn listings into leads.",
+    seoApproved: false,
     slug: "real-estate-marketing-calgary-listing-to-leads",
     excerpt: "Developments, brokerages and agents compete for the same attention. Presentation and process decide who wins it.",
     category: "Real Estate", date: "2026-03-03", author: "Adelfos Marketing", readTime: "8 min", heroImage: u("photo-1560518883-ce09059eeffa"),

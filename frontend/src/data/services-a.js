@@ -46,8 +46,8 @@ export const servicesA = [
     ],
     relatedServices: ["conversion-rate-optimization", "web-design-development", "social-media-management"],
     relatedCaseStudies: ["apex-autohaus", "summit-performance", "nova-commerce"],
-    seoTitle: "Digital Advertising Calgary | Google & Meta Ads Agency | Adelfos",
-    seoDescription: "Performance-driven digital advertising in Calgary. Google Ads, Meta Ads and TikTok campaigns engineered with landing pages and tracking to generate qualified leads.",
+    seoTitle: "Digital Advertising Calgary | Adelfos Marketing",
+    seoDescription: "Run Google, Meta and TikTok ads in Calgary with aligned landing pages, conversion tracking and ongoing optimization for qualified leads.",
   },
   {
     slug: "social-media-management",
@@ -86,8 +86,8 @@ export const servicesA = [
     ],
     relatedServices: ["digital-advertising", "brand-building", "graphic-design"],
     relatedCaseStudies: ["harvest-and-co", "summit-performance", "westridge-realty"],
-    seoTitle: "Social Media Management Calgary | Content & Community | Adelfos",
-    seoDescription: "Social media management for Calgary businesses: strategy, Reels and short-form content, publishing, community management and reporting that ties social to growth.",
+    seoTitle: "Social Media Management Calgary | Adelfos",
+    seoDescription: "Social media management in Calgary: strategy, short-form video, publishing, community management and reporting tied to business goals.",
   },
   {
     slug: "seo",
@@ -125,7 +125,7 @@ export const servicesA = [
     ],
     relatedServices: ["web-design-development", "conversion-rate-optimization", "marketing-advisory"],
     relatedCaseStudies: ["apex-autohaus", "vantage-legal", "nova-commerce"],
-    seoTitle: "SEO Agency Calgary | Local & Technical SEO Services | Adelfos",
+    seoTitle: "SEO Services Calgary | Adelfos Marketing",
     seoDescription: "SEO services in Calgary: technical SEO, on-page optimization, local SEO and Google Business Profile management that drive high-intent organic traffic and leads.",
   },
   {
@@ -164,7 +164,7 @@ export const servicesA = [
     ],
     relatedServices: ["graphic-design", "web-design-development", "social-media-management"],
     relatedCaseStudies: ["northline-developments", "urbanform-interiors", "harvest-and-co"],
-    seoTitle: "Branding Agency Calgary | Brand Strategy & Identity | Adelfos",
+    seoTitle: "Brand Strategy Calgary | Adelfos Marketing",
     seoDescription: "Brand building for Calgary businesses: positioning, messaging, visual identity, brand voice and creative direction that make your business the memorable choice.",
   },
   {
@@ -204,7 +204,7 @@ export const servicesA = [
     ],
     relatedServices: ["seo", "conversion-rate-optimization", "brand-building"],
     relatedCaseStudies: ["vantage-legal", "northline-developments", "nova-commerce"],
-    seoTitle: "Web Design Calgary | Website Development Agency | Adelfos",
+    seoTitle: "Web Design Calgary | Adelfos Marketing",
     seoDescription: "Web design and website development in Calgary. Fast, responsive, SEO-ready websites with CMS, analytics and conversion tracking built to generate leads.",
   },
   {
@@ -244,7 +244,7 @@ export const servicesA = [
     ],
     relatedServices: ["web-design-development", "conversion-rate-optimization", "marketing-advisory"],
     relatedCaseStudies: ["summit-performance", "nova-commerce", "northline-developments"],
-    seoTitle: "App Development Calgary | Mobile & Web Apps | Adelfos",
+    seoTitle: "App Development Calgary | Adelfos",
     seoDescription: "App development in Calgary: product discovery, UX design, iOS, Android and web application development for businesses that need custom digital tools.",
   },
 ];

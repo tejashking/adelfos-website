@@ -10,7 +10,7 @@ const crumbs = [{ label: "Home", to: "/" }, { label: "Work", to: "/work" }];
 export default function Work() {
   return (
     <>
-      <SEO title="Case Studies | Marketing Work for Calgary Businesses" description="Case studies from Adelfos Marketing: brand, web design, SEO, digital advertising and real estate marketing projects for Calgary and Alberta businesses." path="/work" jsonLd={[breadcrumbLd(crumbs)]} />
+      <SEO title="Work | Adelfos Marketing" description="Explore demonstration projects showing how Adelfos Marketing approaches brand, web, advertising and real estate challenges." path="/work" noindex jsonLd={[breadcrumbLd(crumbs)]} />
       <PageHero crumbs={crumbs} eyebrow="Work" lines={["Case", "studies."]} body="Each project below is a demonstration of how we approach a category: the problem, the strategy, the execution and what we learned.">
         <div className="mt-6"><DemoBadge label="All projects shown are demo content — real client work will replace them" /></div>
       </PageHero>

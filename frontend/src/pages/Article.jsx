@@ -22,7 +22,7 @@ export default function Article() {
 
   return (
     <article>
-      <SEO title={a.title} description={a.excerpt} path={`/insights/${a.slug}`} image={a.heroImage} type="article" jsonLd={[ld, breadcrumbLd(crumbs)]} />
+      <SEO title={a.seoTitle || a.title} description={a.seoDescription || a.excerpt} path={`/insights/${a.slug}`} image={a.heroImage} type="article" noindex={!a.seoApproved} jsonLd={[ld, breadcrumbLd(crumbs)]} />
       <header className="bg-white pt-32 sm:pt-40 pb-16">
         <div className="container-x">
           <Breadcrumbs items={crumbs.slice(0, 2)} />

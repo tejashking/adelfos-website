@@ -9,7 +9,7 @@ const crumbs = [{ label: "Home", to: "/" }, { label: "Audit", to: "/audit" }];
 export default function Audit() {
   return (
     <>
-      <SEO title="Marketing Audit | Adelfos Marketing" description="Get a fast digital growth audit for your Calgary business. Review your channels, website, goals and budget with a clear roadmap." path="/audit" jsonLd={[breadcrumbLd(crumbs), { "@context": "https://schema.org", "@type": "Service", url: `${site.url}/audit`, name: "Marketing Audit" }]} />
+      <SEO title="Marketing Audit Calgary | Adelfos" description="Request a Calgary marketing audit of your website and channels. Get a prioritized review of acquisition gaps and a practical growth roadmap." path="/audit" jsonLd={[breadcrumbLd(crumbs), { "@context": "https://schema.org", "@type": "Service", url: `${site.url}/audit`, name: "Marketing Audit" }]} />
       <PageHero crumbs={crumbs} eyebrow="Audit" lines={["See where your", "growth leaks."]} body="Tell us how you are currently attracting customers, what you are trying to achieve and where the gaps are. We will turn that into a simple score and a clear action plan." />
 
       <section className="bg-[#f7f7f7] border-t border-[#e5e5e5]">

@@ -3,17 +3,22 @@ import { site } from "@/data/site";
 
 const ORG = {
   "@context": "https://schema.org",
-  "@type": ["Organization", "LocalBusiness", "MarketingAgency"],
+  "@type": "Organization",
   "@id": `${site.url}/#organization`,
   name: site.name,
   url: site.url,
   logo: `${site.url}${site.logos.mark}`,
   image: `${site.url}${site.logos.wordmarkColour}`,
   email: site.email,
-  telephone: site.whatsappDisplay,
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "business inquiries",
+    telephone: site.whatsappDisplay,
+    email: site.email,
+    availableLanguage: "English",
+  },
   slogan: site.positioning,
   description: site.description,
-  address: { "@type": "PostalAddress", addressLocality: site.location.city, addressRegion: site.location.regionCode, addressCountry: site.location.countryCode },
   areaServed: [{ "@type": "City", name: "Calgary" }, { "@type": "AdministrativeArea", name: "Alberta" }],
   sameAs: site.social.map((s) => s.href),
 };

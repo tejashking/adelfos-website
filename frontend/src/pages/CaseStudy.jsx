@@ -48,7 +48,7 @@ export default function CaseStudy() {
 
   return (
     <article>
-      <SEO title={c.seoTitle} description={c.seoDescription} path={`/work/${c.slug}`} image={c.heroImage} type="article" jsonLd={[breadcrumbLd(crumbs)]} />
+      <SEO title={c.seoTitle} description={c.seoDescription} path={`/work/${c.slug}`} image={c.heroImage} type="article" noindex={c.status !== "live"} jsonLd={[breadcrumbLd(crumbs)]} />
       <header ref={heroRef} className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden bg-black text-white">
         <motion.div style={{ scale: imgScale, y: imgY }} className="absolute inset-0"><img src={c.heroImage} alt={`${c.clientName} project`} className="w-full h-full object-cover opacity-50" /></motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />

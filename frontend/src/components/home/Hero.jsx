@@ -6,7 +6,7 @@ import { TRIANGLES } from "@/components/common/LogoMark";
 import { textRevealVariants, useReducedMotion } from "@/hooks/useAnimation";
 import { site } from "@/data/site";
 
-const LINES = ["We build digital empires", "for local business."];
+const LINES = ["Digital marketing for", "Calgary businesses."];
 const POINTS = ["Get found by customers already searching", "Build a brand people remember", "Turn website visitors into inquiries", "Track results, not just impressions"];
 
 export const Hero = ({ ready = true }) => {
@@ -34,7 +34,7 @@ export const Hero = ({ ready = true }) => {
               ))}
             </h1>
             <motion.p variants={textRevealVariants.fade} className="mt-6 text-base sm:text-lg text-neutral-600 leading-relaxed max-w-xl">
-              Strategy, creative, technology and performance, engineered to turn attention into action. Adelfos helps Calgary businesses get found, be remembered and convert.
+              Strategy, creative, technology and performance work together to help local businesses get found, be remembered and convert.
             </motion.p>
             <motion.ul variants={textRevealVariants.fade} className="mt-8 grid sm:grid-cols-2 gap-3 max-w-xl">
               {POINTS.map((p) => <li key={p} className="flex items-start gap-3 bg-[#f7f7f7] rounded-md px-4 py-3 text-sm font-semibold text-[#111]"><CheckCircle2 size={18} className="text-[#ff3131] shrink-0 mt-0.5" aria-hidden="true" />{p}</li>)}

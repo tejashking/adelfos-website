@@ -45,7 +45,7 @@ export const servicesB = [
     relatedServices: ["web-design-development", "digital-advertising", "seo"],
     relatedCaseStudies: ["vantage-legal", "nova-commerce", "summit-performance"],
     seoTitle: "Conversion Rate Optimization Calgary | CRO Agency | Adelfos",
-    seoDescription: "Conversion rate optimization for Calgary businesses: funnel analysis, landing page optimization, form and CTA testing to turn existing traffic into more leads and sales.",
+    seoDescription: "CRO for Calgary businesses: funnel analysis, landing pages, forms and CTA testing to turn more existing traffic into qualified leads and sales.",
   },
   {
     slug: "marketing-advisory",
@@ -83,7 +83,7 @@ export const servicesB = [
     ],
     relatedServices: ["brand-building", "digital-advertising", "conversion-rate-optimization"],
     relatedCaseStudies: ["nova-commerce", "westridge-realty", "vantage-legal"],
-    seoTitle: "Marketing Consultant Calgary | Strategy & Advisory | Adelfos",
+    seoTitle: "Marketing Consultant Calgary | Adelfos",
     seoDescription: "Marketing advisory in Calgary: audits, growth roadmaps, channel strategy and performance reviews from a senior team that plans before it spends.",
   },
   {
@@ -121,7 +121,7 @@ export const servicesB = [
     ],
     relatedServices: ["brand-building", "social-media-management", "digital-advertising"],
     relatedCaseStudies: ["urbanform-interiors", "harvest-and-co", "northline-developments"],
-    seoTitle: "Graphic Design Calgary | Marketing Creative & Print | Adelfos",
+    seoTitle: "Graphic Design Calgary | Adelfos Marketing",
     seoDescription: "Graphic design in Calgary: advertising creative, social graphics, brochures, presentations, posters and marketing collateral designed within your brand system.",
   },
   {
@@ -160,8 +160,8 @@ export const servicesB = [
     ],
     relatedServices: ["real-estate", "graphic-design", "web-design-development"],
     relatedCaseStudies: ["northline-developments", "urbanform-interiors", "westridge-realty"],
-    seoTitle: "3D Design Calgary | 2D Drawings & 3D Visualization | Adelfos",
-    seoDescription: "2D drawings and 3D visualization in Calgary: architectural graphics, conceptual design visuals, marketing renders and interactive web scenes for developers and designers.",
+    seoTitle: "3D Visualization Calgary | Adelfos Marketing",
+    seoDescription: "Calgary 2D drawings and 3D visualization: architectural graphics, design concepts and marketing renders for developers and designers.",
   },
   {
     slug: "real-estate",
@@ -199,7 +199,7 @@ export const servicesB = [
     ],
     relatedServices: ["2d-3d-design", "digital-advertising", "web-design-development"],
     relatedCaseStudies: ["northline-developments", "westridge-realty", "urbanform-interiors"],
-    seoTitle: "Real Estate Marketing Calgary | Development & Brokerage Marketing | Adelfos",
-    seoDescription: "Real estate marketing in Calgary: development branding, 3D visualization, project websites, lead-generation advertising and social media for developers, brokerages and agents.",
+    seoTitle: "Real Estate Marketing Calgary | Adelfos Marketing",
+    seoDescription: "Real estate marketing in Calgary: development branding, 3D visualization, project websites and lead generation for developers, brokerages and agents.",
   },
 ];
