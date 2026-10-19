@@ -204,6 +204,7 @@ def rate_limited(ip: str, scope: str = "generic") -> bool:
 
 async def notify(sub: ContactSubmission) -> bool:
     if not (RESEND_API_KEY and SENDER_EMAIL and NOTIFY_EMAIL):
+        logger.warning("Contact email skipped: set RESEND_API_KEY, SENDER_EMAIL and NOTIFY_EMAIL in backend/.env")
         return False
     rows = "".join(
         f"<tr><td style='padding:6px 12px;color:#888;font-size:12px;text-transform:uppercase'>{k}</td>"
