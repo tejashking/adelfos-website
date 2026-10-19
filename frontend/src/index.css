@@ -34,7 +34,7 @@ body {
 }
 
 * { box-sizing: border-box; }
-canvas { touch-action: none; }
+canvas { touch-action: pan-y; }
 
 ::selection { background: var(--red); color: var(--white); }
 

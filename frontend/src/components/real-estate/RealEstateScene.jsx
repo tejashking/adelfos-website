@@ -12,6 +12,7 @@ export default function RealEstateScene({ progressMV, mobile = false }) {
   const wrap = useRef(null);
   const lastHotspotProgress = useRef(0);
   const [hotspotProgress, setHotspotProgress] = useState(0);
+  const [active, setActive] = useState(true);
 
   useMotionValueEvent(progressMV, "change", (v) => {
     progress.current = v;
@@ -20,6 +21,13 @@ export default function RealEstateScene({ progressMV, mobile = false }) {
       setHotspotProgress(v);
     }
   });
+
+  useEffect(() => {
+    const el = wrap.current; if (!el) return;
+    const io = new IntersectionObserver(([e]) => setActive(e.isIntersecting));
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
     const el = wrap.current; if (!el) return;
@@ -39,7 +47,7 @@ export default function RealEstateScene({ progressMV, mobile = false }) {
 
   return (
     <div ref={wrap} className="absolute inset-0" data-cursor="3d" data-testid="real-estate-canvas">
-      <Canvas dpr={mobile ? [1, 1.25] : [1, 1.75]} shadows={!mobile} camera={{ fov: mobile ? 45 : 32, position: [14, 5.5, 16], near: 0.1, far: 100 }} gl={{ antialias: !mobile, powerPreference: "high-performance", alpha: true }} style={{ background: "transparent" }}>
+      <Canvas frameloop={active ? "always" : "never"} dpr={mobile ? [1, 1.25] : [1, 1.75]} shadows={!mobile} camera={{ fov: mobile ? 45 : 32, position: [14, 5.5, 16], near: 0.1, far: 100 }} gl={{ antialias: !mobile, powerPreference: "high-performance", alpha: true }} style={{ background: "transparent" }}>
         <color attach="background" args={["#000000"]} />
         <fog attach="fog" args={["#000000", 18, 42]} />
         <ambientLight intensity={0.35} />
@@ -48,7 +56,7 @@ export default function RealEstateScene({ progressMV, mobile = false }) {
         <pointLight position={[-2, 1.2, 3.5]} intensity={mobile ? 2 : 4} color="#ffcf9a" distance={10} />
         <Suspense fallback={null}>
           <BuildingModel progress={progress} />
-          {!mobile && <ContactShadows position={[0, -0.6, 0]} opacity={0.6} scale={30} blur={2.4} far={6} />}
+          {!mobile && <ContactShadows position={[0, -0.6, 0]} opacity={0.6} scale={30} blur={2.4} far={6} frames={1} />}
         </Suspense>
         <hemisphereLight args={["#2a2a33", "#000000", 0.5]} />
         <CameraRig progress={progress} pointer={pointer} distance={mobile ? 1.5 : 1} />

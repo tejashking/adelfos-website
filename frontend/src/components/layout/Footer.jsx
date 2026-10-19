@@ -18,8 +18,8 @@ export const Footer = () => {
             <img src={`${process.env.PUBLIC_URL || ""}/images/brand/wordmark-white.png`} alt="Adelfos Marketing — Beyond boundaries, beyond expectation" width="260" height="86" className="w-56 sm:w-64 h-auto" loading="lazy" />
             <p className="display-md mt-10 max-w-md">We build digital empires<br />for local business.</p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a href={`mailto:${site.email}`} onClick={() => trackEvent("email_click")} data-testid="footer-email" className="link-underline font-mono text-xs uppercase tracking-[0.2em] text-neutral-300 hover:text-white self-center">{site.email}</a>
-              <a href={site.whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("whatsapp_click")} data-testid="footer-whatsapp" className="btn btn-outline-dark"><span>WhatsApp us</span></a>
+              <a href={`mailto:${site.email}`} onClick={() => trackEvent("email_click")} data-testid="footer-email" className="link-underline font-mono text-xs uppercase tracking-[0.2em] text-neutral-300 hover:text-white">{site.email}</a>
+              <a href={site.whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("whatsapp_click")} data-testid="footer-whatsapp" className="link-underline font-mono text-xs uppercase tracking-[0.2em] text-white font-medium">WhatsApp {site.whatsappDisplay}</a>
             </div>
           </div>
           <div className="lg:col-span-2 lg:col-start-7">
